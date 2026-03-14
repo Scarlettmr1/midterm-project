@@ -18,4 +18,4 @@ That's it — no npm install, no build step, no server needed.
 [View the deployed app →] (https://reel-and-read.netlify.app)
 
 ## What I Learned
-Through this project I learned how to structure and persist data in the browser using localStorage, including reading, writing, and parsing JSON. I also got more comfortable building dynamic UIs with vanilla JavaScript — handling user input, updating the DOM in real time, and keeping the interface in sync with stored data.
+Through this project I learned how to structure and persist data in the browser using localStorage, including reading, writing, and parsing JSON. I also got more comfortable building dynamic UIs with vanilla JavaScript, handling user input, updating the DOM in real time, and keeping the interface in sync with stored data.
