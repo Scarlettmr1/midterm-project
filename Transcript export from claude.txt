@@ -1,0 +1,2893 @@
+
+╭─── Claude Code v2.1.71 ──────────────────────────────────────────────────────╮
+│                             │ Tips for getting started                       │
+│    Welcome back scarlett!   │ Run /init to create a CLAUDE.md file with ins… │
+│                             │ ────────────────────────────────────────────── │
+│           ▐▛███▜▌           │ Recent activity                                │
+│          ▝▜█████▛▘          │ No recent activity                             │
+│            ▘▘ ▝▝            │                                                │
+│                             │                                                │
+│   Sonnet 4.6 · Claude Pro   │                                                │
+│      ~\midterm-project      │                                                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+  ✻ Voice mode is now available · /voice to enable
+
+❯ Can you create a website app for a Movie/ Book Tracker that has an option to  
+browse a collection of movies or books, save favorites to localStorage, mark as 
+ watched/read, rate and review, filter by genre or status with all the          
+necessary files?                                                                
+
+● I'll create all three files now — index.html, style.css, and app.js.
+
+● Write(index.html)
+  ⎿  Wrote 118 lines to index.html
+      1 <!DOCTYPE html>
+      2 <html lang="en">
+      3 <head>
+      4   <meta charset="UTF-8">
+      5   <meta name="viewport" content="width=device-width, initial-scal
+        e=1.0">
+      6   <title>CineReads &mdash; Movie &amp; Book Tracker</title>
+      7   <link rel="stylesheet" href="style.css">
+      8 </head>
+      9 <body>
+     … +108 lines (ctrl+o to expand)
+
+● Write(style.css)
+  ⎿  Wrote 702 lines to style.css
+       1 /* ===== RESET & BASE ===== */
+       2 *, *::before, *::after { box-sizing: border-box; margin: 0; padd
+         ing: 0; }
+       3 
+       4 :root {
+       5   --bg:         #0d0d1a;
+       6   --bg2:        #13131f;
+       7   --bg3:        #1c1c2e;
+       8   --card:       #181828;
+       9   --card-hover: #1e1e32;
+      10   --border:     rgba(255,255,255,0.08);
+     … +692 lines (ctrl+o to expand)
+
+● Write(app.js)
+  ⎿  Wrote 541 lines to app.js
+       1 // ============================================================
+       2 //  CineReads — Movie & Book Tracker
+       3 //  All data persisted in localStorage under key "cinereads_v1"
+       4 // ============================================================
+       5 
+       6 'use strict';
+       7 
+       8 /* ---- Static catalog data ---- */
+       9 const CATALOG = [
+      10   // MOVIES
+     … +531 lines (ctrl+o to expand)
+
+● All three files are created. Here's a full summary of what was built:
+
+  ---
+  CineReads — Movie & Book Tracker
+
+  Files
+
+  ┌────────────┬──────────────────────────────────────────────┐
+  │    File    │                   Purpose                    │
+  ├────────────┼──────────────────────────────────────────────┤
+  │ index.html │ App structure, modal, filters, grid          │
+  ├────────────┼──────────────────────────────────────────────┤
+  │ style.css  │ Dark-themed responsive UI with CSS variables │
+  ├────────────┼──────────────────────────────────────────────┤
+  │ app.js     │ All logic, data, and localStorage handling   │
+  └────────────┴──────────────────────────────────────────────┘
+
+  Features
+
+  - 32 pre-loaded items — 16 movies + 16 books across 15 genres
+  - Tab switching between Movies and Books (resets filters)
+  - Search — by title, director/author, or genre
+  - Filter by genre — dynamically populated per tab
+  - Filter by status — All / Favorites / Watched+Read / Not Yet / Rated
+  - Sort — Default / A–Z / Newest / Oldest / Top Rated
+  - Favorites — heart button on each card and in the modal
+  - Mark Watched/Read — toggle badge shown on card cover
+  - Star rating (1–5) — hover previews, click same star to clear
+  - Write & save reviews — saved per item, Ctrl+Enter shortcut
+  - Stats bar — live count of total, completed, favorites, rated
+  - localStorage persistence — all user data survives page reloads
+  - Responsive — adapts from 4-column desktop to 2-column mobile
+  - Accessible — keyboard navigable cards, ARIA labels, roles
+
+  Open index.html in any browser — no build step or server needed.
+
+✻ Cogitated for 4m 41s
+
+❯ Can you change the name to Reel&Reed?                                         
+
+● Searched for 1 pattern (ctrl+o to expand)
+
+● Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      3  <head>
+      4    <meta charset="UTF-8">
+      5    <meta name="viewport" content="width=device-width, initial-sca
+         le=1.0">
+      6 -  <title>CineReads &mdash; Movie &amp; Book Tracker</title>     
+      6 +  <title>Reel&amp;Reed &mdash; Movie &amp; Book Tracker</title> 
+      7    <link rel="stylesheet" href="style.css">
+      8  </head>
+      9  <body>
+
+● Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      14        <div class="logo">
+      15          <div class="logo-icon">&#127916;</div>
+      16          <div class="logo-text">
+      17 -          <h1>CineReads</h1>                                   
+      17 +          <h1>Reel&amp;Reed</h1>                               
+      18            <span>Track what you love</span>
+      19          </div>
+      20        </div>
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+      1  // ============================================================
+      2 -//  CineReads — Movie & Book Tracker                            
+      2 +//  Reel&Reed — Movie & Book Tracker                            
+      3  //  All data persisted in localStorage under key "cinereads_v1"
+      4  // ============================================================
+      5  
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+       96    try {
+       97      localStorage.setItem(STORAGE_KEY, JSON.stringify(userData)
+           );
+       98    } catch {
+       99 -    console.warn('CineReads: localStorage write failed.');    
+       99 +    console.warn('Reel&Reed: localStorage write failed.');    
+      100    }
+      101  }
+      102  
+
+● Done. Updated all four occurrences across index.html and app.js:
+
+  - Browser tab title → Reel&Reed — Movie & Book Tracker
+  - Header logo → Reel&Reed
+  - Comment header in app.js
+  - Console warning in app.js
+
+❯ /theme                                                                        
+  ⎿  Theme picker dismissed
+
+❯ Can you add a my list page state where it shows total titles, avg. ratings,   
+and favorite counts                                                             
+
+● Read 2 files (ctrl+o to expand)
+
+● Good plan. I'll add a "My List" tab that shows a full dashboard — hero stats,
+  per-type breakdowns with progress bars, and scrollable sections for favorites,
+   watched/read, and rated items.
+
+● Update(index.html)
+  ⎿  Added 1 line
+      21        <nav class="tabs">
+      22          <button class="tab-btn active" data-tab="movies">&#1279
+          16; Movies</button>
+      23          <button class="tab-btn" data-tab="books">&#128218; Book
+          s</button>
+      24 +        <button class="tab-btn" data-tab="mylist">&#128203; My 
+         +List</button>                                                  
+      25        </nav>
+      26      </div>
+      27    </header>
+
+● Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      27    </header>
+      28  
+      29    <!-- Filters -->
+      30 -  <section class="filters-section">                            
+      30 +  <section class="filters-section" id="filtersSection">        
+      31      <div class="filters-inner">
+      32        <div class="search-wrap">
+      33          <span class="search-icon">&#128269;</span>
+
+● Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      56    </section>
+      57  
+      58    <!-- Stats Bar -->
+      59 -  <section class="stats-section">                              
+      59 +  <section class="stats-section" id="statsSection">            
+      60      <div class="stats-inner" id="statsBar"></div>
+      61    </section>
+      62  
+
+● Update(index.html)
+  ⎿  Added 4 lines, removed 1 line
+      60      <div class="stats-inner" id="statsBar"></div>
+      61    </section>
+      62  
+      63 +  <!-- My List Page -->                                        
+      64 +  <div id="myListPage" style="display:none"></div>             
+      65 +                                                               
+      66    <!-- Grid -->
+      64 -  <main>                                                       
+      67 +  <main id="browseMain">                                       
+      68      <div class="grid" id="itemGrid"></div>
+      69      <div class="empty-state" id="emptyState">
+      70        <div class="empty-icon">&#128269;</div>
+
+● Now add the My List styles to style.css:
+
+● Update(style.css)
+  ⎿  Added 275 lines
+      675    transform: translateX(-50%) translateY(0);
+      676  }
+      677  
+      678 +/* ===== MY LIST PAGE ===== */                                
+      679 +#myListPage {                                                 
+      680 +  max-width: 1280px;                                          
+      681 +  margin: 0 auto;                                             
+      682 +  padding: 36px 24px 80px;                                    
+      683 +}                                                             
+      684 +                                                              
+      685 +.mylist-header {                                              
+      686 +  margin-bottom: 28px;                                        
+      687 +}                                                             
+      688 +                                                              
+      689 +.mylist-header h2 {                                           
+      690 +  font-size: 28px;                                            
+      691 +  font-weight: 800;                                           
+      692 +  background: linear-gradient(90deg, #e94560, #7c5cbf);       
+      693 +  -webkit-background-clip: text;                              
+      694 +  -webkit-text-fill-color: transparent;                       
+      695 +  background-clip: text;                                      
+      696 +  margin-bottom: 4px;                                         
+      697 +}                                                             
+      698 +                                                              
+      699 +.mylist-header p {                                            
+      700 +  font-size: 14px;                                            
+      701 +  color: var(--text3);                                        
+      702 +}                                                             
+      703 +                                                              
+      704 +/* Hero stat cards */                                         
+      705 +.mylist-hero {                                                
+      706 +  display: grid;                                              
+      707 +  grid-template-columns: repeat(3, 1fr);                      
+      708 +  gap: 16px;                                                  
+      709 +  margin-bottom: 24px;                                        
+      710 +}                                                             
+      711 +                                                              
+      712 +.mylist-stat-card {                                           
+      713 +  background: var(--card);                                    
+      714 +  border: 1px solid var(--border);                            
+      715 +  border-radius: var(--radius);                               
+      716 +  padding: 24px 20px;                                         
+      717 +  display: flex;                                              
+      718 +  flex-direction: column;                                     
+      719 +  gap: 6px;                                                   
+      720 +  position: relative;                                         
+      721 +  overflow: hidden;                                           
+      722 +}                                                             
+      723 +                                                              
+      724 +.mylist-stat-card::before {                                   
+      725 +  content: '';                                                
+      726 +  position: absolute;                                         
+      727 +  top: 0; left: 0; right: 0;                                  
+      728 +  height: 3px;                                                
+      729 +  border-radius: var(--radius) var(--radius) 0 0;             
+      730 +}                                                             
+      731 +                                                              
+      732 +.card-blue::before  { background: linear-gradient(90deg, #4fac
+          +fe, #00d2ff); }                                               
+      733 +.card-gold::before  { background: linear-gradient(90deg, #f7c9
+          +48, #ff9a00); }                                               
+      734 +.card-red::before   { background: linear-gradient(90deg, #e945
+          +60, #7c5cbf); }                                               
+      735 +                                                              
+      736 +.mysc-icon { font-size: 22px; line-height: 1; margin-bottom: 4
+          +px; }                                                         
+      737 +                                                              
+      738 +.mysc-num {                                                   
+      739 +  font-size: 42px;                                            
+      740 +  font-weight: 900;                                           
+      741 +  line-height: 1;                                             
+      742 +  letter-spacing: -2px;                                       
+      743 +  color: var(--text);                                         
+      744 +}                                                             
+      745 +                                                              
+      746 +.mysc-label {                                                 
+      747 +  font-size: 13px;                                            
+      748 +  color: var(--text2);                                        
+      749 +  font-weight: 600;                                           
+      750 +  text-transform: uppercase;                                  
+      751 +  letter-spacing: 0.5px;                                      
+      752 +}                                                             
+      753 +                                                              
+      754 +.mysc-sub {                                                   
+      755 +  font-size: 12px;                                            
+      756 +  color: var(--text3);                                        
+      757 +}                                                             
+      758 +                                                              
+      759 +/* Breakdown cards */                                         
+      760 +.mylist-breakdown {                                           
+      761 +  display: grid;                                              
+      762 +  grid-template-columns: 1fr 1fr;                             
+      763 +  gap: 16px;                                                  
+      764 +  margin-bottom: 36px;                                        
+      765 +}                                                             
+      766 +                                                              
+      767 +.breakdown-card {                                             
+      768 +  background: var(--card);                                    
+      769 +  border: 1px solid var(--border);                            
+      770 +  border-radius: var(--radius);                               
+      771 +  padding: 20px;                                              
+      772 +}                                                             
+      773 +                                                              
+      774 +.breakdown-label {                                            
+      775 +  font-size: 15px;                                            
+      776 +  font-weight: 700;                                           
+      777 +  margin-bottom: 14px;                                        
+      778 +  color: var(--text);                                         
+      779 +}                                                             
+      780 +                                                              
+      781 +.breakdown-rows {                                             
+      782 +  display: flex;                                              
+      783 +  flex-direction: column;                                     
+      784 +  gap: 8px;                                                   
+      785 +  margin-bottom: 16px;                                        
+      786 +}                                                             
+      787 +                                                              
+      788 +.brow {                                                       
+      789 +  display: flex;                                              
+      790 +  justify-content: space-between;                             
+      791 +  align-items: center;                                        
+      792 +  font-size: 13px;                                            
+      793 +  color: var(--text2);                                        
+      794 +}                                                             
+      795 +                                                              
+      796 +.brow strong {                                                
+      797 +  color: var(--text);                                         
+      798 +  font-weight: 700;                                           
+      799 +}                                                             
+      800 +                                                              
+      801 +.breakdown-bar-wrap {                                         
+      802 +  height: 6px;                                                
+      803 +  background: var(--bg2);                                     
+      804 +  border-radius: 3px;                                         
+      805 +  overflow: hidden;                                           
+      806 +  margin-bottom: 6px;                                         
+      807 +}                                                             
+      808 +                                                              
+      809 +.breakdown-bar {                                              
+      810 +  height: 100%;                                               
+      811 +  background: linear-gradient(90deg, var(--accent), var(--acce
+          +nt2));                                                        
+      812 +  border-radius: 3px;                                         
+      813 +  min-width: 4px;                                             
+      814 +  transition: width 0.6s ease;                                
+      815 +}                                                             
+      816 +                                                              
+      817 +.breakdown-bar-label {                                        
+      818 +  font-size: 11px;                                            
+      819 +  color: var(--text3);                                        
+      820 +  text-align: right;                                          
+      821 +}                                                             
+      822 +                                                              
+      823 +/* List sections */                                           
+      824 +.mylist-section {                                             
+      825 +  margin-bottom: 36px;                                        
+      826 +}                                                             
+      827 +                                                              
+      828 +.mylist-section-title {                                       
+      829 +  font-size: 15px;                                            
+      830 +  font-weight: 700;                                           
+      831 +  color: var(--text2);                                        
+      832 +  text-transform: uppercase;                                  
+      833 +  letter-spacing: 0.6px;                                      
+      834 +  margin-bottom: 14px;                                        
+      835 +  display: flex;                                              
+      836 +  align-items: center;                                        
+      837 +  gap: 10px;                                                  
+      838 +}                                                             
+      839 +                                                              
+      840 +.section-count {                                              
+      841 +  background: var(--bg3);                                     
+      842 +  border: 1px solid var(--border);                            
+      843 +  color: var(--text3);                                        
+      844 +  font-size: 11px;                                            
+      845 +  font-weight: 700;                                           
+      846 +  padding: 2px 8px;                                           
+      847 +  border-radius: 20px;                                        
+      848 +  letter-spacing: 0;                                          
+      849 +  text-transform: none;                                       
+      850 +}                                                             
+      851 +                                                              
+      852 +.mylist-empty {                                               
+      853 +  color: var(--text3);                                        
+      854 +  font-size: 14px;                                            
+      855 +  padding: 20px 0;                                            
+      856 +  font-style: italic;                                         
+      857 +}                                                             
+      858 +                                                              
+      859 +.mylist-rows {                                                
+      860 +  display: flex;                                              
+      861 +  flex-direction: column;                                     
+      862 +  gap: 10px;                                                  
+      863 +}                                                             
+      864 +                                                              
+      865 +/* Individual item row */                                     
+      866 +.mylist-row {                                                 
+      867 +  background: var(--card);                                    
+      868 +  border: 1px solid var(--border);                            
+      869 +  border-radius: 10px;                                        
+      870 +  display: flex;                                              
+      871 +  align-items: center;                                        
+      872 +  gap: 14px;                                                  
+      873 +  padding: 12px 14px;                                         
+      874 +  cursor: pointer;                                            
+      875 +  transition: background var(--transition), border-color var(-
+          +-transition), transform var(--transition);                    
+      876 +}                                                             
+      877 +                                                              
+      878 +.mylist-row:hover {                                           
+      879 +  background: var(--card-hover);                              
+      880 +  border-color: rgba(255,255,255,0.14);                       
+      881 +  transform: translateX(3px);                                 
+      882 +}                                                             
+      883 +                                                              
+      884 +.mrow-cover {                                                 
+      885 +  width: 44px;                                                
+      886 +  height: 44px;                                               
+      887 +  border-radius: 8px;                                         
+      888 +  display: flex;                                              
+      889 +  align-items: center;                                        
+      890 +  justify-content: center;                                    
+      891 +  font-size: 22px;                                            
+      892 +  flex-shrink: 0;                                             
+      893 +}                                                             
+      894 +                                                              
+      895 +.mrow-info {                                                  
+      896 +  flex: 1;                                                    
+      897 +  min-width: 0;                                               
+      898 +}                                                             
+      899 +                                                              
+      900 +.mrow-title {                                                 
+      901 +  font-size: 14px;                                            
+      902 +  font-weight: 700;                                           
+      903 +  color: var(--text);                                         
+      904 +  white-space: nowrap;                                        
+      905 +  overflow: hidden;                                           
+      906 +  text-overflow: ellipsis;                                    
+      907 +}                                                             
+      908 +                                                              
+      909 +.mrow-meta {                                                  
+      910 +  font-size: 12px;                                            
+      911 +  color: var(--text3);                                        
+      912 +  margin-top: 2px;                                            
+      913 +}                                                             
+      914 +                                                              
+      915 +.mrow-review {                                                
+      916 +  font-size: 12px;                                            
+      917 +  color: var(--text2);                                        
+      918 +  font-style: italic;                                         
+      919 +  margin-top: 4px;                                            
+      920 +  white-space: nowrap;                                        
+      921 +  overflow: hidden;                                           
+      922 +  text-overflow: ellipsis;                                    
+      923 +}                                                             
+      924 +                                                              
+      925 +.mrow-right {                                                 
+      926 +  display: flex;                                              
+      927 +  flex-direction: column;                                     
+      928 +  align-items: flex-end;                                      
+      929 +  gap: 5px;                                                   
+      930 +  flex-shrink: 0;                                             
+      931 +}                                                             
+      932 +                                                              
+      933 +.mrow-stars {                                                 
+      934 +  display: flex;                                              
+      935 +  gap: 1px;                                                   
+      936 +  font-size: 12px;                                            
+      937 +}                                                             
+      938 +                                                              
+      939 +.mrow-stars .star-filled { color: var(--gold); }              
+      940 +.mrow-stars .star-empty  { color: var(--text3); }             
+      941 +                                                              
+      942 +.mrow-badge {                                                 
+      943 +  font-size: 10px;                                            
+      944 +  font-weight: 700;                                           
+      945 +  background: rgba(56, 239, 125, 0.15);                       
+      946 +  color: var(--green);                                        
+      947 +  border: 1px solid rgba(56, 239, 125, 0.3);                  
+      948 +  padding: 2px 7px;                                           
+      949 +  border-radius: 4px;                                         
+      950 +  white-space: nowrap;                                        
+      951 +}                                                             
+      952 +                                                              
+      953  /* ===== SCROLLBAR ===== */
+      954  ::-webkit-scrollbar { width: 6px; height: 6px; }
+      955  ::-webkit-scrollbar-track { background: transparent; }
+
+● Now add the responsive breakpoints for My List to the bottom of the responsive
+   section:
+
+● Update(style.css)
+  ⎿  Added 5 lines, removed 1 line
+      959  @media (max-width: 640px) {
+      960    .header-inner { padding: 0 16px; }
+      961    .logo-text span { display: none; }
+      962 -  .tab-btn { padding: 8px 14px; font-size: 13px; }            
+      962 +  .tab-btn { padding: 8px 10px; font-size: 12px; }            
+      963    .filters-inner { padding: 0 16px; }
+      964    .selects-wrap { width: 100%; }
+      965    .selects-wrap select { flex: 1; min-width: 0; font-size: 12p
+           x; }
+     ...
+      970    .modal-body { padding: 16px 18px 24px; }
+      971    .modal-info h2 { font-size: 18px; }
+      972    .stats-inner { padding: 8px 16px; gap: 10px; }
+      973 +  #myListPage { padding: 24px 16px 60px; }                    
+      974 +  .mylist-hero { grid-template-columns: 1fr; gap: 12px; }     
+      975 +  .mysc-num { font-size: 34px; }                              
+      976 +  .mylist-breakdown { grid-template-columns: 1fr; }           
+      977  }
+      978  
+      979  @media (max-width: 400px) {
+
+● Now update app.js — add currentPage to state, showPage(), renderMyList(),
+  renderMyListSection(), and update the tab/init logic:
+
+● Update(app.js)
+  ⎿  Added 1 line
+      67  
+      68  /* ---- App state ---- */
+      69  let state = {
+      70 +  currentPage: 'browse',   // 'browse' | 'mylist'              
+      71    currentTab:  'movies',
+      72    search:      '',
+      73    genreFilter: 'all',
+
+● Update(app.js)
+  ⎿  Added 163 lines
+      416  }
+      417  
+      418  /* ======================================================
+      419 +   PAGE VISIBILITY                                            
+      420 +====================================================== */     
+      421 +function showPage(page) {                                     
+      422 +  state.currentPage = page;                                   
+      423 +  const isMyList = page === 'mylist';                         
+      424 +  document.getElementById('filtersSection').style.display = is
+          +MyList ? 'none' : '';                                         
+      425 +  document.getElementById('statsSection').style.display   = is
+          +MyList ? 'none' : '';                                         
+      426 +  document.getElementById('browseMain').style.display     = is
+          +MyList ? 'none' : '';                                         
+      427 +  document.getElementById('myListPage').style.display     = is
+          +MyList ? '' : 'none';                                         
+      428 +  if (isMyList) renderMyList();                               
+      429 +}                                                             
+      430 +                                                              
+      431 +/* ======================================================     
+      432 +   MY LIST PAGE                                               
+      433 +====================================================== */     
+      434 +function renderMyList() {                                     
+      435 +  const movies = CATALOG.filter(c => c.type === 'movie');     
+      436 +  const books  = CATALOG.filter(c => c.type === 'book');      
+      437 +  const all    = CATALOG;                                     
+      438 +                                                              
+      439 +  // --- Computed stats ---                                   
+      440 +  const favMovies     = movies.filter(c => getItem(c.id).favor
+          +ite);                                                         
+      441 +  const favBooks      = books.filter(c => getItem(c.id).favori
+          +te);                                                          
+      442 +  const totalFavs     = favMovies.length + favBooks.length;   
+      443 +                                                              
+      444 +  const watchedMovies = movies.filter(c => getItem(c.id).compl
+          +eted);                                                        
+      445 +  const readBooks     = books.filter(c => getItem(c.id).comple
+          +ted);                                                         
+      446 +                                                              
+      447 +  const ratedAll      = all.filter(c => getItem(c.id).rating >
+          + 0);                                                          
+      448 +  const ratedMovies   = movies.filter(c => getItem(c.id).ratin
+          +g > 0);                                                       
+      449 +  const ratedBooks    = books.filter(c => getItem(c.id).rating
+          + > 0);                                                        
+      450 +                                                              
+      451 +  const avgOf = arr => arr.length                             
+      452 +    ? (arr.reduce((s, c) => s + getItem(c.id).rating, 0) / arr
+          +.length).toFixed(1)                                           
+      453 +    : null;                                                   
+      454 +                                                              
+      455 +  const avgAll   = avgOf(ratedAll);                           
+      456 +  const avgMovie = avgOf(ratedMovies);                        
+      457 +  const avgBook  = avgOf(ratedBooks);                         
+      458 +                                                              
+      459 +  const reviewedItems = all.filter(c => getItem(c.id).review &
+          +& getItem(c.id).review.trim());                               
+      460 +  const ratedOrReviewed = [...new Map(                        
+      461 +    [...ratedAll, ...reviewedItems].map(c => [c.id, c])       
+      462 +  ).values()];                                                
+      463 +                                                              
+      464 +  const page = document.getElementById('myListPage');         
+      465 +                                                              
+      466 +  page.innerHTML = `                                          
+      467 +    <div class="mylist-inner">                                
+      468 +      <div class="mylist-header">                             
+      469 +        <h2>My List</h2>                                      
+      470 +        <p>Your personal tracking dashboard</p>               
+      471 +      </div>                                                  
+      472 +                                                              
+      473 +      <div class="mylist-hero">                               
+      474 +        <div class="mylist-stat-card card-blue">              
+      475 +          <div class="mysc-icon">&#127916;&#128218;</div>     
+      476 +          <div class="mysc-num">${all.length}</div>           
+      477 +          <div class="mysc-label">Total Titles</div>          
+      478 +          <div class="mysc-sub">${movies.length} movies &amp; 
+          +${books.length} books</div>                                   
+      479 +        </div>                                                
+      480 +        <div class="mylist-stat-card card-gold">              
+      481 +          <div class="mysc-icon">&#9733;</div>                
+      482 +          <div class="mysc-num">${avgAll !== null ? avgAll : '
+          +&mdash;'}</div>                                               
+      483 +          <div class="mysc-label">Avg. Rating</div>           
+      484 +          <div class="mysc-sub">${ratedAll.length} title${rate
+          +dAll.length !== 1 ? 's' : ''} rated</div>                     
+      485 +        </div>                                                
+      486 +        <div class="mylist-stat-card card-red">               
+      487 +          <div class="mysc-icon">&#10084;</div>               
+      488 +          <div class="mysc-num">${totalFavs}</div>            
+      489 +          <div class="mysc-label">Favorites</div>             
+      490 +          <div class="mysc-sub">${favMovies.length} movies &am
+          +p; ${favBooks.length} books</div>                             
+      491 +        </div>                                                
+      492 +      </div>                                                  
+      493 +                                                              
+      494 +      <div class="mylist-breakdown">                          
+      495 +        <div class="breakdown-card">                          
+      496 +          <div class="breakdown-label">&#127916; Movies</div> 
+      497 +          <div class="breakdown-rows">                        
+      498 +            <div class="brow"><span>Total</span><strong>${movi
+          +es.length}</strong></div>                                     
+      499 +            <div class="brow"><span>Watched</span><strong>${wa
+          +tchedMovies.length}</strong></div>                            
+      500 +            <div class="brow"><span>Favorites</span><strong>${
+          +favMovies.length}</strong></div>                              
+      501 +            <div class="brow"><span>Avg Rating</span><strong>$
+          +{avgMovie !== null ? avgMovie + ' &#9733;' : '&mdash;'}</stron
+          +g></div>                                                      
+      502 +          </div>                                              
+      503 +          <div class="breakdown-bar-wrap">                    
+      504 +            <div class="breakdown-bar" style="width:${movies.l
+          +ength ? Math.round(watchedMovies.length / movies.length * 100)
+          + : 0}%"></div>                                                
+      505 +          </div>                                              
+      506 +          <div class="breakdown-bar-label">${watchedMovies.len
+          +gth} / ${movies.length} watched</div>                         
+      507 +        </div>                                                
+      508 +        <div class="breakdown-card">                          
+      509 +          <div class="breakdown-label">&#128218; Books</div>  
+      510 +          <div class="breakdown-rows">                        
+      511 +            <div class="brow"><span>Total</span><strong>${book
+          +s.length}</strong></div>                                      
+      512 +            <div class="brow"><span>Read</span><strong>${readB
+          +ooks.length}</strong></div>                                   
+      513 +            <div class="brow"><span>Favorites</span><strong>${
+          +favBooks.length}</strong></div>                               
+      514 +            <div class="brow"><span>Avg Rating</span><strong>$
+          +{avgBook !== null ? avgBook + ' &#9733;' : '&mdash;'}</strong>
+          +</div>                                                        
+      515 +          </div>                                              
+      516 +          <div class="breakdown-bar-wrap">                    
+      517 +            <div class="breakdown-bar" style="width:${books.le
+          +ngth ? Math.round(readBooks.length / books.length * 100) : 0}%
+          +"></div>                                                      
+      518 +          </div>                                              
+      519 +          <div class="breakdown-bar-label">${readBooks.length}
+          + / ${books.length} read</div>                                 
+      520 +        </div>                                                
+      521 +      </div>                                                  
+      522 +                                                              
+      523 +      ${renderMyListSection('&#10084; Favorites', [...favMovie
+          +s, ...favBooks], 'No favorites yet &mdash; heart some titles!'
+          +)}                                                            
+      524 +      ${renderMyListSection('&#10003; Watched &amp; Read', [..
+          +.watchedMovies, ...readBooks], 'Nothing marked as watched or r
+          +ead yet.')}                                                   
+      525 +      ${renderMyListSection('&#9733; Ratings &amp; Reviews', r
+          +atedOrReviewed, 'No ratings or reviews yet &mdash; rate some t
+          +itles!')}                                                     
+      526 +    </div>                                                    
+      527 +  `;                                                          
+      528 +                                                              
+      529 +  // Event delegation: clicking a row opens the modal         
+      530 +  page.querySelectorAll('.mylist-row').forEach(row => {       
+      531 +    row.addEventListener('click', () => openModal(row.dataset.
+          +id));                                                         
+      532 +    row.addEventListener('keydown', e => {                    
+      533 +      if (e.key === 'Enter' || e.key === ' ') { e.preventDefau
+          +lt(); openModal(row.dataset.id); }                            
+      534 +    });                                                       
+      535 +  });                                                         
+      536 +}                                                             
+      537 +                                                              
+      538 +function renderMyListSection(title, items, emptyMsg) {        
+      539 +  if (items.length === 0) {                                   
+      540 +    return `                                                  
+      541 +      <section class="mylist-section">                        
+      542 +        <h3 class="mylist-section-title">${title}</h3>        
+      543 +        <div class="mylist-empty">${emptyMsg}</div>           
+      544 +      </section>`;                                            
+      545 +  }                                                           
+      546 +                                                              
+      547 +  const rows = items.map(item => {                            
+      548 +    const ud  = getItem(item.id);                             
+      549 +    const cfg = GENRE_CONFIG[item.genre] || { gradient: 'linea
+          +r-gradient(135deg,#333,#555)', emoji: '🎬' };                 
+      550 +    const stars = [1,2,3,4,5].map(i =>                        
+      551 +      `<span class="${i <= ud.rating ? 'star-filled' : 'star-e
+          +mpty'}">&#9733;</span>`                                       
+      552 +    ).join('');                                               
+      553 +    const reviewSnippet = ud.review                           
+      554 +      ? `<div class="mrow-review">&ldquo;${escHtml(ud.review.s
+          +lice(0, 90))}${ud.review.length > 90 ? '&hellip;' : ''}&rdquo;
+          +</div>`                                                       
+      555 +      : '';                                                   
+      556 +    const badge = ud.completed                                
+      557 +      ? `<span class="mrow-badge">${item.type === 'movie' ? 'W
+          +atched' : 'Read'}</span>`                                     
+      558 +      : '';                                                   
+      559 +    return `                                                  
+      560 +      <div class="mylist-row" data-id="${item.id}" role="butto
+          +n" tabindex="0" aria-label="${escHtml(item.title)}">          
+      561 +        <div class="mrow-cover" style="background:${cfg.gradie
+          +nt}">${cfg.emoji}</div>                                       
+      562 +        <div class="mrow-info">                               
+      563 +          <div class="mrow-title">${escHtml(item.title)}</div>
+      564 +          <div class="mrow-meta">${item.type === 'movie' ? '&#
+          +127916;' : '&#128218;'} ${item.year} &bull; ${escHtml(item.cre
+          +dit)}</div>                                                   
+      565 +          ${reviewSnippet}                                    
+      566 +        </div>                                                
+      567 +        <div class="mrow-right">                              
+      568 +          ${ud.rating ? `<div class="mrow-stars">${stars}</div
+          +>` : ''}                                                      
+      569 +          ${badge}                                            
+      570 +        </div>                                                
+      571 +      </div>`;                                                
+      572 +  }).join('');                                                
+      573 +                                                              
+      574 +  return `                                                    
+      575 +    <section class="mylist-section">                          
+      576 +      <h3 class="mylist-section-title">${title} <span class="s
+          +ection-count">${items.length}</span></h3>                     
+      577 +      <div class="mylist-rows">${rows}</div>                  
+      578 +    </section>`;                                              
+      579 +}                                                             
+      580 +                                                              
+      581 +/* ======================================================     
+      582     UTILITY
+      583  ====================================================== */
+      584  function escHtml(str) {
+
+● Now update the tab click handler and add a renderMyList refresh call inside
+  renderGrid:
+
+● Update(app.js)
+  ⎿  Added 8 lines, removed 1 line
+      596    /* --- Tab buttons --- */
+      597    document.querySelectorAll('.tab-btn').forEach(btn => {
+      598      btn.addEventListener('click', () => {
+      599 -      if (btn.dataset.tab === state.currentTab) return;       
+      599        document.querySelectorAll('.tab-btn').forEach(b => b.cla
+           ssList.remove('active'));
+      600        btn.classList.add('active');
+      601 +                                                              
+      602 +      if (btn.dataset.tab === 'mylist') {                     
+      603 +        showPage('mylist');                                   
+      604 +        return;                                               
+      605 +      }                                                       
+      606 +                                                              
+      607 +      showPage('browse');                                     
+      608 +      if (btn.dataset.tab === state.currentTab) return;       
+      609        state.currentTab  = btn.dataset.tab;
+      610        state.genreFilter = 'all';
+      611        state.search      = '';
+
+● Finally, make renderGrid also refresh My List when it's open (so toggling
+  favorites/ratings from the modal updates it live):
+
+● Update(app.js)
+  ⎿  Added 1 line
+      289    }
+      290  
+      291    renderStats();
+      292 +  if (state.currentPage === 'mylist') renderMyList();         
+      293  }
+      294  
+      295  /* ======================================================
+
+● Done. Here's what was added:
+
+  My List tab — click "My List" in the nav to enter the dashboard. The
+  filters/grid hide and the page takes over.
+
+  Hero stat cards (3 across):
+  - Total Titles — 32, with movies/books split shown below
+  - Avg. Rating — calculated across all rated items, shows how many are rated
+  - Favorites — total count with movies/books split below
+
+  Breakdown section (2 columns):
+  - Movies and Books each get their own card showing total, watched/read,
+  favorites, avg rating, and a progress bar showing completion %
+
+  3 scrollable item lists:
+  - Favorites — all hearted items
+  - Watched & Read — all completed items
+  - Ratings & Reviews — items you've rated or written a review for, with a
+  review snippet visible inline
+
+  Clicking any row in My List opens the detail modal, so you can update
+  ratings/favorites without leaving the page — and the dashboard refreshes
+  automatically.
+
+✻ Brewed for 3m 18s
+
+❯ Also add the feature to sort by recently added, highest rated or A-Z          
+
+● Read 1 file (ctrl+o to expand)
+
+● Three changes needed: add the new sort option to the dropdown, track addedAt
+  timestamps in setItem, and implement the sort logic.
+
+● Update(index.html)
+  ⎿  Added 2 lines, removed 1 line
+      46          </select>
+      47          <select id="sortFilter">
+      48            <option value="default">Sort: Default</option>
+      49 +          <option value="recent">Sort: Recently Added</option> 
+      50 +          <option value="rating">Sort: Highest Rated</option>  
+      51            <option value="title">Sort: A &#8594; Z</option>
+      52            <option value="year-desc">Sort: Newest</option>
+      53            <option value="year-asc">Sort: Oldest</option>
+      52 -          <option value="rating">Sort: Top Rated</option>      
+      54          </select>
+      55        </div>
+      56      </div>
+
+● Now stamp addedAt the first time an item gets any user interaction, and wire
+  up the new sort:
+
+● Update(app.js)
+  ⎿  Added 6 lines, removed 1 line
+      106  }
+      107  
+      108  function setItem(id, patch) {
+      109 -  userData[id] = { ...getItem(id), ...patch };                
+      109 +  const existing = getItem(id);                               
+      110 +  userData[id] = {                                            
+      111 +    ...existing,                                              
+      112 +    ...patch,                                                 
+      113 +    addedAt: existing.addedAt || Date.now(),                  
+      114 +  };                                                          
+      115    saveUserData();
+      116  }
+      117  
+
+● Update(app.js)
+  ⎿  Added 6 lines, removed 3 lines
+      148  
+      149    // Sort
+      150    switch (state.sortFilter) {
+      151 +    case 'recent':                                            
+      152 +      items.sort((a, b) => (getItem(b.id).addedAt || 0) - (get
+          +Item(a.id).addedAt || 0));                                    
+      153 +      break;                                                  
+      154 +    case 'rating':                                            
+      155 +      items.sort((a, b) => (getItem(b.id).rating || 0) - (getI
+          +tem(a.id).rating || 0));                                      
+      156 +      break;                                                  
+      157      case 'title':
+      158        items.sort((a, b) => a.title.localeCompare(b.title));
+      159        break;
+     ...
+      163      case 'year-asc':
+      164        items.sort((a, b) => a.year - b.year);
+      165        break;
+      160 -    case 'rating':                                            
+      161 -      items.sort((a, b) => (getItem(b.id).rating || 0) - (getI
+          -tem(a.id).rating || 0));                                      
+      162 -      break;                                                  
+      166    }
+      167  
+      168    return items;
+
+● Done. Here's what changed:
+
+  - Sort: Recently Added — uses a addedAt timestamp that's written to
+  localStorage the first time you interact with any item (favorite, complete,
+  rate, or review). Items you've never touched fall to the bottom.
+  - Sort: Highest Rated — renamed from "Top Rated" for clarity, same behavior
+  (items with no rating sort last).
+  - Sort: A → Z — unchanged.
+
+  The two existing year sorts (Newest / Oldest) are still there as well. The new
+   options appear at the top of the dropdown since they're the most useful for a
+   personal tracker.
+
+✻ Brewed for 36s
+
+❯ ＋ Add Title FAB to add your own custom movies/books                          
+
+● Let me read the current modal section of the HTML first, then make all changes
+   across all three files.
+
+● Read 1 file (ctrl+o to expand)
+
+● Now I have the full picture. Making all changes across the three files.
+
+● Update(index.html)
+  ⎿  Added 4 lines, removed 1 line
+      83        </div>
+      84        <div class="modal-body">
+      85          <div class="modal-info">
+      86 -          <span class="modal-genre-badge" id="modalGenreBadge">
+         -</span>                                                        
+      86 +          <div class="modal-badges">                           
+      87 +            <span class="modal-genre-badge" id="modalGenreBadge
+         +"></span>                                                      
+      88 +            <span class="modal-custom-badge" id="modalCustomBad
+         +ge" style="display:none">&#10022; Custom</span>                
+      89 +          </div>                                               
+      90            <h2 id="modalTitle"></h2>
+      91            <p class="modal-meta" id="modalMeta"></p>
+      92            <p class="modal-desc" id="modalDesc"></p>
+
+● Update(index.html)
+  ⎿  Added 1 line
+       95          <div class="modal-actions">
+       96            <button class="btn-action btn-complete" id="modalCom
+           plete"></button>
+       97            <button class="btn-action btn-favorite" id="modalFav
+           orite"></button>
+       98 +          <button class="btn-action btn-delete" id="modalDelet
+          +e" style="display:none" title="Remove this custom title">&#128
+          +465;</button>                                                 
+       99          </div>
+      100  
+      101          <div class="modal-rating-section">
+
+● Update(index.html)
+  ⎿  Added 52 lines
+      119      </div>
+      120    </div>
+      121  
+      122 +  <!-- Add Title Modal -->                                    
+      123 +  <div class="modal-overlay" id="addModalOverlay" role="dialog
+          +" aria-modal="true" aria-label="Add title">                   
+      124 +    <div class="modal add-modal" id="addModal">               
+      125 +      <button class="modal-close" id="addModalClose" aria-labe
+          +l="Close">&#x2715;</button>                                   
+      126 +      <div class="add-modal-header">                          
+      127 +        <h2>&#43; Add a Title</h2>                            
+      128 +        <p>Create your own entry in the collection</p>        
+      129 +      </div>                                                  
+      130 +      <form class="add-form" id="addForm" novalidate>         
+      131 +        <div class="form-group">                              
+      132 +          <label>Type</label>                                 
+      133 +          <div class="type-toggle">                           
+      134 +            <button type="button" class="type-btn active" data
+          +-type="movie">&#127916; Movie</button>                        
+      135 +            <button type="button" class="type-btn" data-type="
+          +book">&#128218; Book</button>                                 
+      136 +          </div>                                              
+      137 +        </div>                                                
+      138 +        <div class="form-group">                              
+      139 +          <label for="addTitle">Title <span class="required">*
+          +</span></label>                                               
+      140 +          <input type="text" id="addTitle" placeholder="e.g. T
+          +he Batman" maxlength="100" autocomplete="off">                
+      141 +        </div>                                                
+      142 +        <div class="form-row">                                
+      143 +          <div class="form-group">                            
+      144 +            <label for="addGenre">Genre <span class="required"
+          +>*</span></label>                                             
+      145 +            <select id="addGenre">                            
+      146 +              <option value="">Select a genre&hellip;</option>
+      147 +            </select>                                         
+      148 +          </div>                                              
+      149 +          <div class="form-group">                            
+      150 +            <label for="addYear">Year <span class="required">*
+          +</span></label>                                               
+      151 +            <input type="number" id="addYear" placeholder="202
+          +4" min="1800" max="2099">                                     
+      152 +          </div>                                              
+      153 +        </div>                                                
+      154 +        <div class="form-group">                              
+      155 +          <label for="addCredit" id="addCreditLabel">Director 
+          +<span class="required">*</span></label>                       
+      156 +          <input type="text" id="addCredit" placeholder="e.g. 
+          +Christopher Nolan" maxlength="80" autocomplete="off">         
+      157 +        </div>                                                
+      158 +        <div class="form-group">                              
+      159 +          <label for="addDesc">Description</label>            
+      160 +          <textarea id="addDesc" rows="3" placeholder="Brief s
+          +ynopsis&hellip;" maxlength="400"></textarea>                  
+      161 +        </div>                                                
+      162 +        <p class="form-error" id="addFormError"></p>          
+      163 +        <button type="submit" class="btn-save btn-full">Add to
+          + Collection</button>                                          
+      164 +      </form>                                                 
+      165 +    </div>                                                    
+      166 +  </div>                                                      
+      167 +                                                              
+      168 +  <!-- FAB -->                                                
+      169 +  <button class="fab" id="fabAdd" aria-label="Add a title">   
+      170 +    <span class="fab-plus">&#43;</span>                       
+      171 +    <span class="fab-label">Add Title</span>                  
+      172 +  </button>                                                   
+      173 +                                                              
+      174    <!-- Toast Notification -->
+      175    <div class="toast" id="toast" role="status" aria-live="polit
+           e"></div>
+      176  
+
+● Now add all CSS for FAB, form, and custom items:
+
+● Update(style.css)
+  ⎿  Added 201 lines
+      649  .btn-save:hover { opacity: 0.88; transform: translateY(-1px); 
+           }
+      650  .btn-save:active { transform: translateY(0); }
+      651  
+      652 +/* ===== FAB ===== */                                         
+      653 +.fab {                                                        
+      654 +  position: fixed;                                            
+      655 +  bottom: 32px;                                               
+      656 +  right: 32px;                                                
+      657 +  z-index: 150;                                               
+      658 +  display: flex;                                              
+      659 +  align-items: center;                                        
+      660 +  gap: 9px;                                                   
+      661 +  background: linear-gradient(135deg, var(--accent), var(--acc
+          +ent2));                                                       
+      662 +  border: none;                                               
+      663 +  border-radius: 28px;                                        
+      664 +  padding: 13px 20px 13px 16px;                               
+      665 +  cursor: pointer;                                            
+      666 +  box-shadow: 0 4px 20px rgba(233, 69, 96, 0.45);             
+      667 +  transition: transform var(--transition), box-shadow var(--tr
+          +ansition);                                                    
+      668 +}                                                             
+      669 +                                                              
+      670 +.fab:hover {                                                  
+      671 +  transform: translateY(-3px) scale(1.04);                    
+      672 +  box-shadow: 0 8px 28px rgba(233, 69, 96, 0.6);              
+      673 +}                                                             
+      674 +                                                              
+      675 +.fab:active { transform: translateY(-1px) scale(1.01); }      
+      676 +                                                              
+      677 +.fab-plus {                                                   
+      678 +  font-size: 22px;                                            
+      679 +  font-weight: 300;                                           
+      680 +  color: #fff;                                                
+      681 +  line-height: 1;                                             
+      682 +  display: flex;                                              
+      683 +  align-items: center;                                        
+      684 +}                                                             
+      685 +                                                              
+      686 +.fab-label {                                                  
+      687 +  font-size: 14px;                                            
+      688 +  font-weight: 700;                                           
+      689 +  color: #fff;                                                
+      690 +  letter-spacing: 0.2px;                                      
+      691 +}                                                             
+      692 +                                                              
+      693 +/* ===== ADD TITLE MODAL ===== */                             
+      694 +.add-modal-header {                                           
+      695 +  padding: 24px 24px 18px;                                    
+      696 +  border-bottom: 1px solid var(--border);                     
+      697 +}                                                             
+      698 +                                                              
+      699 +.add-modal-header h2 {                                        
+      700 +  font-size: 20px;                                            
+      701 +  font-weight: 800;                                           
+      702 +  color: var(--text);                                         
+      703 +  margin-bottom: 4px;                                         
+      704 +}                                                             
+      705 +                                                              
+      706 +.add-modal-header p {                                         
+      707 +  font-size: 13px;                                            
+      708 +  color: var(--text3);                                        
+      709 +}                                                             
+      710 +                                                              
+      711 +.add-form {                                                   
+      712 +  padding: 20px 24px 28px;                                    
+      713 +  display: flex;                                              
+      714 +  flex-direction: column;                                     
+      715 +  gap: 16px;                                                  
+      716 +}                                                             
+      717 +                                                              
+      718 +.form-group {                                                 
+      719 +  display: flex;                                              
+      720 +  flex-direction: column;                                     
+      721 +  gap: 7px;                                                   
+      722 +}                                                             
+      723 +                                                              
+      724 +.form-group label {                                           
+      725 +  font-size: 11px;                                            
+      726 +  font-weight: 700;                                           
+      727 +  color: var(--text2);                                        
+      728 +  text-transform: uppercase;                                  
+      729 +  letter-spacing: 0.6px;                                      
+      730 +}                                                             
+      731 +                                                              
+      732 +.form-group input,                                            
+      733 +.form-group select,                                           
+      734 +.form-group textarea {                                        
+      735 +  background: var(--bg2);                                     
+      736 +  border: 1px solid var(--border);                            
+      737 +  border-radius: 8px;                                         
+      738 +  color: var(--text);                                         
+      739 +  padding: 10px 12px;                                         
+      740 +  font-size: 14px;                                            
+      741 +  font-family: inherit;                                       
+      742 +  outline: none;                                              
+      743 +  transition: border-color var(--transition);                 
+      744 +  width: 100%;                                                
+      745 +}                                                             
+      746 +                                                              
+      747 +.form-group input:focus,                                      
+      748 +.form-group select:focus,                                     
+      749 +.form-group textarea:focus { border-color: var(--accent2); }  
+      750 +                                                              
+      751 +.form-group input::placeholder,                               
+      752 +.form-group textarea::placeholder { color: var(--text3); }    
+      753 +                                                              
+      754 +.form-group textarea { resize: vertical; min-height: 80px; }  
+      755 +                                                              
+      756 +.form-row {                                                   
+      757 +  display: grid;                                              
+      758 +  grid-template-columns: 1fr 110px;                           
+      759 +  gap: 12px;                                                  
+      760 +}                                                             
+      761 +                                                              
+      762 +/* Type toggle */                                             
+      763 +.type-toggle {                                                
+      764 +  display: flex;                                              
+      765 +  gap: 8px;                                                   
+      766 +}                                                             
+      767 +                                                              
+      768 +.type-btn {                                                   
+      769 +  flex: 1;                                                    
+      770 +  padding: 10px 12px;                                         
+      771 +  border-radius: 8px;                                         
+      772 +  border: 1px solid var(--border);                            
+      773 +  background: var(--bg3);                                     
+      774 +  color: var(--text2);                                        
+      775 +  font-size: 14px;                                            
+      776 +  font-weight: 600;                                           
+      777 +  cursor: pointer;                                            
+      778 +  transition: all var(--transition);                          
+      779 +}                                                             
+      780 +                                                              
+      781 +.type-btn:hover { border-color: rgba(255,255,255,0.15); color:
+          + var(--text); }                                               
+      782 +                                                              
+      783 +.type-btn.active {                                            
+      784 +  background: linear-gradient(135deg, var(--accent), var(--acc
+          +ent2));                                                       
+      785 +  color: #fff;                                                
+      786 +  border-color: transparent;                                  
+      787 +  box-shadow: 0 2px 10px rgba(233, 69, 96, 0.3);              
+      788 +}                                                             
+      789 +                                                              
+      790 +.required { color: var(--accent); }                           
+      791 +                                                              
+      792 +.form-error {                                                 
+      793 +  font-size: 13px;                                            
+      794 +  color: var(--accent);                                       
+      795 +  min-height: 16px;                                           
+      796 +  margin: -4px 0;                                             
+      797 +}                                                             
+      798 +                                                              
+      799 +.btn-full { width: 100%; justify-content: center; }           
+      800 +                                                              
+      801 +/* ===== CUSTOM ITEM STYLES ===== */                          
+      802 +.card.custom { border-left: 3px solid var(--accent2); }       
+      803 +                                                              
+      804 +.card-custom-dot {                                            
+      805 +  position: absolute;                                         
+      806 +  bottom: 10px;                                               
+      807 +  left: 10px;                                                 
+      808 +  font-size: 9px;                                             
+      809 +  font-weight: 800;                                           
+      810 +  letter-spacing: 0.5px;                                      
+      811 +  text-transform: uppercase;                                  
+      812 +  background: rgba(124, 92, 191, 0.75);                       
+      813 +  color: #fff;                                                
+      814 +  padding: 2px 6px;                                           
+      815 +  border-radius: 3px;                                         
+      816 +  backdrop-filter: blur(4px);                                 
+      817 +}                                                             
+      818 +                                                              
+      819 +.modal-badges {                                               
+      820 +  display: flex;                                              
+      821 +  align-items: center;                                        
+      822 +  gap: 8px;                                                   
+      823 +  flex-wrap: wrap;                                            
+      824 +  margin-bottom: 6px;                                         
+      825 +}                                                             
+      826 +                                                              
+      827 +.modal-genre-badge { margin-bottom: 0; }                      
+      828 +                                                              
+      829 +.modal-custom-badge {                                         
+      830 +  font-size: 11px;                                            
+      831 +  font-weight: 700;                                           
+      832 +  letter-spacing: 0.5px;                                      
+      833 +  text-transform: uppercase;                                  
+      834 +  background: rgba(124, 92, 191, 0.2);                        
+      835 +  color: #b899ff;                                             
+      836 +  border: 1px solid rgba(124, 92, 191, 0.4);                  
+      837 +  padding: 3px 10px;                                          
+      838 +  border-radius: 4px;                                         
+      839 +}                                                             
+      840 +                                                              
+      841 +/* Delete button in modal */                                  
+      842 +.btn-delete {                                                 
+      843 +  flex: 0 0 auto;                                             
+      844 +  padding: 10px 14px;                                         
+      845 +  background: rgba(233, 69, 96, 0.08);                        
+      846 +  color: var(--accent);                                       
+      847 +  border-color: rgba(233, 69, 96, 0.2);                       
+      848 +  font-size: 16px;                                            
+      849 +}                                                             
+      850 +                                                              
+      851 +.btn-delete:hover { background: rgba(233, 69, 96, 0.2); border
+          +-color: var(--accent); }                                      
+      852 +                                                              
+      853  /* ===== TOAST ===== */
+      854  .toast {
+      855    position: fixed;
+
+● Also fix the modal-genre-badge margin since it now lives inside .modal-badges:
+
+● Update(style.css)
+  ⎿  Removed 1 line
+      519    color: #b899ff;
+      520    padding: 3px 10px;
+      521    border-radius: 4px;
+      522 -  margin-bottom: 6px;                                         
+      522  }
+      523  
+      524  .modal-info h2 {
+
+● Now the big JS update — custom items storage, all helper functions, updated
+  modal/render logic, and event wiring:
+
+● Update(app.js)
+  ⎿  Added 1 line
+      64  
+      65  const RATING_LABELS = { 1: 'Poor', 2: 'Fair', 3: 'Good', 4: 'Gr
+          eat', 5: 'Excellent' };
+      66  const STORAGE_KEY   = 'cinereads_v1';
+      67 +const CUSTOM_KEY    = 'cinereads_custom_v1';                   
+      68  
+      69  /* ---- App state ---- */
+      70  let state = {
+
+● Update(app.js)
+  ⎿  Added 4 lines, removed 1 line
+      79  };
+      80  
+      81  /* ---- User data (persisted) ---- */
+      82 -// Shape: { [id]: { favorite, completed, rating, review } }    
+      82 +// Shape: { [id]: { favorite, completed, rating, review, addedA
+         +t } }                                                          
+      83  let userData = {};
+      84  
+      85 +/* ---- Custom items (persisted) ---- */                       
+      86 +let customItems = [];                                          
+      87 +                                                               
+      88  /* ======================================================
+      89     STORAGE
+      90  ====================================================== */
+
+● Update(app.js)
+  ⎿  Added 21 lines
+      105    }
+      106  }
+      107  
+      108 +function loadCustomItems() {                                  
+      109 +  try {                                                       
+      110 +    const raw = localStorage.getItem(CUSTOM_KEY);             
+      111 +    customItems = raw ? JSON.parse(raw) : [];                 
+      112 +  } catch {                                                   
+      113 +    customItems = [];                                         
+      114 +  }                                                           
+      115 +}                                                             
+      116 +                                                              
+      117 +function saveCustomItems() {                                  
+      118 +  try {                                                       
+      119 +    localStorage.setItem(CUSTOM_KEY, JSON.stringify(customItem
+          +s));                                                          
+      120 +  } catch {                                                   
+      121 +    console.warn('Reel&Reed: localStorage write failed (custom
+          + items).');                                                   
+      122 +  }                                                           
+      123 +}                                                             
+      124 +                                                              
+      125 +function getAllItems() {                                      
+      126 +  return [...CATALOG, ...customItems];                        
+      127 +}                                                             
+      128 +                                                              
+      129  function getItem(id) {
+      130    return userData[id] || { favorite: false, completed: false, 
+           rating: 0, review: '' };
+      131  }
+
+● Now update getVisibleItems and renderMyList to use getAllItems(), and fix
+  openModal/toggleComplete to use it too:
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+      147    const tab    = state.currentTab;
+      148    const search = state.search.toLowerCase().trim();
+      149  
+      150 -  let items = CATALOG.filter(c => c.type === (tab === 'movies'
+          - ? 'movie' : 'book'));                                        
+      150 +  let items = getAllItems().filter(c => c.type === (tab === 'm
+          +ovies' ? 'movie' : 'book'));                                  
+      151  
+      152    // Search
+      153    if (search) {
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+      220  ====================================================== */
+      221  function renderStats() {
+      222    const tab   = state.currentTab;
+      223 -  const items = CATALOG.filter(c => c.type === (tab === 'movie
+          -s' ? 'movie' : 'book'));                                      
+      223 +  const items = getAllItems().filter(c => c.type === (tab === 
+          +'movies' ? 'movie' : 'book'));                                
+      224    const total     = items.length;
+      225    const completed = items.filter(c => getItem(c.id).completed)
+           .length;
+      226    const favorites = items.filter(c => getItem(c.id).favorite).
+           length;
+
+● Update buildCard to mark custom cards and openModal + toggleComplete to use
+  getAllItems():
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+      252    const label    = item.type === 'movie' ? 'Watched' : 'Read';
+      253  
+      254    const card = document.createElement('div');
+      255 -  card.className    = 'card';                                 
+      255 +  card.className    = item.custom ? 'card custom' : 'card';   
+      256    card.dataset.id   = item.id;
+      257    card.setAttribute('role', 'button');
+      258    card.setAttribute('tabindex', '0');
+
+● Update(app.js)
+  ⎿  Added 1 line
+      266          ${ud.favorite ? '&#10084;' : '&#9825;'}
+      267        </button>
+      268        <span class="card-complete-badge ${ud.completed ? 'visib
+           le' : ''}">&#10003; ${label}</span>
+      269 +      ${item.custom ? '<span class="card-custom-dot">Custom</s
+          +pan>' : ''}                                                   
+      270        <span style="position:relative;z-index:1;font-size:52px"
+           >${cfg.emoji}</span>
+      271      </div>
+      272      <div class="card-body">
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+      330     MODAL
+      331  ====================================================== */
+      332  function openModal(id) {
+      333 -  const item = CATALOG.find(c => c.id === id);                
+      333 +  const item = getAllItems().find(c => c.id === id);          
+      334    if (!item) return;
+      335    state.openItemId = id;
+      336  
+
+● Update(app.js)
+  ⎿  Added 5 lines
+      363      ? `${RATING_LABELS[ud.rating]} (${ud.rating}/5)`
+      364      : 'Not rated yet';
+      365  
+      366 +  // Custom item controls                                     
+      367 +  const isCustom = !!item.custom;                             
+      368 +  document.getElementById('modalCustomBadge').style.display = 
+          +isCustom ? 'inline-block' : 'none';                           
+      369 +  document.getElementById('modalDelete').style.display      = 
+          +isCustom ? '' : 'none';                                       
+      370 +                                                              
+      371    document.getElementById('modalOverlay').classList.add('open'
+           );
+      372    document.body.style.overflow = 'hidden';
+      373  }
+
+● Update(app.js)
+  ⎿  Added 1 line, removed 1 line
+      406  }
+      407  
+      408  function toggleComplete(id) {
+      409 -  const item = CATALOG.find(c => c.id === id);                
+      409 +  const item = getAllItems().find(c => c.id === id);          
+      410    const ud   = getItem(id);
+      411    setItem(id, { completed: !ud.completed });
+      412    const verb = item.type === 'movie' ? 'watched' : 'read';
+
+● Update renderMyList to use getAllItems() instead of CATALOG:
+
+● Update(app.js)
+  ⎿  Added 3 lines, removed 3 lines
+      472     MY LIST PAGE
+      473  ====================================================== */
+      474  function renderMyList() {
+      475 -  const movies = CATALOG.filter(c => c.type === 'movie');     
+      476 -  const books  = CATALOG.filter(c => c.type === 'book');      
+      477 -  const all    = CATALOG;                                     
+      475 +  const all    = getAllItems();                               
+      476 +  const movies = all.filter(c => c.type === 'movie');         
+      477 +  const books  = all.filter(c => c.type === 'book');          
+      478  
+      479    // --- Computed stats ---
+      480    const favMovies     = movies.filter(c => getItem(c.id).favor
+           ite);
+
+● Now add all new functions — deleteCustomItem, openAddModal, closeAddModal,
+  submitAddForm, updateCreditLabel, populateAddGenreSelect — before the UTILITY
+  section:
+
+● Update(app.js)
+  ⎿  Added 110 lines
+      456  }
+      457  
+      458  /* ======================================================
+      459 +   CUSTOM ITEMS — ADD & DELETE                                
+      460 +====================================================== */     
+      461 +function deleteCustomItem(id) {                               
+      462 +  customItems = customItems.filter(c => c.id !== id);         
+      463 +  saveCustomItems();                                          
+      464 +  delete userData[id];                                        
+      465 +  saveUserData();                                             
+      466 +  closeModal();                                               
+      467 +  renderGrid();                                               
+      468 +  if (state.currentPage === 'mylist') renderMyList();         
+      469 +  showToast('Custom title removed');                          
+      470 +}                                                             
+      471 +                                                              
+      472 +function openAddModal() {                                     
+      473 +  // Reset fields                                             
+      474 +  document.getElementById('addTitle').value  = '';            
+      475 +  document.getElementById('addYear').value   = '';            
+      476 +  document.getElementById('addCredit').value = '';            
+      477 +  document.getElementById('addDesc').value   = '';            
+      478 +  document.getElementById('addFormError').textContent = '';   
+      479 +  document.getElementById('addGenre').value  = '';            
+      480 +  // Reset type toggle to movie                               
+      481 +  document.querySelectorAll('.type-btn').forEach(b => b.classL
+          +ist.remove('active'));                                        
+      482 +  document.querySelector('.type-btn[data-type="movie"]').class
+          +List.add('active');                                           
+      483 +  updateCreditLabel('movie');                                 
+      484 +                                                              
+      485 +  document.getElementById('addModalOverlay').classList.add('op
+          +en');                                                         
+      486 +  document.body.style.overflow = 'hidden';                    
+      487 +  setTimeout(() => document.getElementById('addTitle').focus()
+          +, 80);                                                        
+      488 +}                                                             
+      489 +                                                              
+      490 +function closeAddModal() {                                    
+      491 +  document.getElementById('addModalOverlay').classList.remove(
+          +'open');                                                      
+      492 +  document.body.style.overflow = '';                          
+      493 +}                                                             
+      494 +                                                              
+      495 +function updateCreditLabel(type) {                            
+      496 +  const isMovie = type === 'movie';                           
+      497 +  document.getElementById('addCreditLabel').innerHTML =       
+      498 +    `${isMovie ? 'Director' : 'Author'} <span class="required"
+          +>*</span>`;                                                   
+      499 +  document.getElementById('addCredit').placeholder =          
+      500 +    isMovie ? 'e.g. Christopher Nolan' : 'e.g. Stephen King'; 
+      501 +}                                                             
+      502 +                                                              
+      503 +function populateAddGenreSelect() {                           
+      504 +  const sel = document.getElementById('addGenre');            
+      505 +  sel.innerHTML = '<option value="">Select a genre&hellip;</op
+          +tion>';                                                       
+      506 +  Object.keys(GENRE_CONFIG).sort().forEach(g => {             
+      507 +    const opt = document.createElement('option');             
+      508 +    opt.value       = g;                                      
+      509 +    opt.textContent = g;                                      
+      510 +    sel.appendChild(opt);                                     
+      511 +  });                                                         
+      512 +}                                                             
+      513 +                                                              
+      514 +function submitAddForm(e) {                                   
+      515 +  e.preventDefault();                                         
+      516 +  const errorEl = document.getElementById('addFormError');    
+      517 +                                                              
+      518 +  const type   = document.querySelector('.type-btn.active').da
+          +taset.type;                                                   
+      519 +  const title  = document.getElementById('addTitle').value.tri
+          +m();                                                          
+      520 +  const genre  = document.getElementById('addGenre').value;   
+      521 +  const yearRaw= document.getElementById('addYear').value.trim
+          +();                                                           
+      522 +  const credit = document.getElementById('addCredit').value.tr
+          +im();                                                         
+      523 +  const desc   = document.getElementById('addDesc').value.trim
+          +();                                                           
+      524 +                                                              
+      525 +  if (!title)  { errorEl.textContent = 'Title is required.'; r
+          +eturn; }                                                      
+      526 +  if (!genre)  { errorEl.textContent = 'Please select a genre.
+          +'; return; }                                                  
+      527 +  const year = parseInt(yearRaw);                             
+      528 +  if (!yearRaw || isNaN(year) || year < 1800 || year > 2099) {
+      529 +    errorEl.textContent = 'Enter a valid year between 1800 and
+          + 2099.';                                                      
+      530 +    return;                                                   
+      531 +  }                                                           
+      532 +  if (!credit) {                                              
+      533 +    errorEl.textContent = `${type === 'movie' ? 'Director' : '
+          +Author'} is required.`;                                       
+      534 +    return;                                                   
+      535 +  }                                                           
+      536 +  errorEl.textContent = '';                                   
+      537 +                                                              
+      538 +  const newItem = {                                           
+      539 +    id:     'cu_' + Date.now(),                               
+      540 +    type,                                                     
+      541 +    title,                                                    
+      542 +    genre,                                                    
+      543 +    year,                                                     
+      544 +    credit: type === 'movie' ? `Dir. ${credit}` : credit,     
+      545 +    desc:   desc || 'No description provided.',               
+      546 +    custom: true,                                             
+      547 +  };                                                          
+      548 +                                                              
+      549 +  customItems.push(newItem);                                  
+      550 +  saveCustomItems();                                          
+      551 +                                                              
+      552 +  // Stamp addedAt so "Recently Added" sort works immediately 
+      553 +  setItem(newItem.id, { addedAt: Date.now() });               
+      554 +                                                              
+      555 +  closeAddModal();                                            
+      556 +  showToast(`"${title}" added to your collection!`);          
+      557 +                                                              
+      558 +  // Navigate to the right browse tab                         
+      559 +  const targetTab = type === 'movie' ? 'movies' : 'books';    
+      560 +  const tabBtn = document.querySelector(`.tab-btn[data-tab="${
+          +targetTab}"]`);                                               
+      561 +  if (state.currentPage === 'mylist' || state.currentTab !== t
+          +argetTab) {                                                   
+      562 +    tabBtn.click();                                           
+      563 +  } else {                                                    
+      564 +    renderGrid();                                             
+      565 +  }                                                           
+      566 +}                                                             
+      567 +                                                              
+      568 +/* ======================================================     
+      569     PAGE VISIBILITY
+      570  ====================================================== */
+      571  function showPage(page) {
+
+● Finally, wire up all the new events in init() and update the Escape handler:
+
+● Update(app.js)
+  ⎿  Added 2 lines
+      740  ====================================================== */
+      741  function init() {
+      742    loadUserData();
+      743 +  loadCustomItems();                                          
+      744 +  populateAddGenreSelect();                                   
+      745    populateGenreFilter();
+      746    renderGrid();
+      747  
+
+● Update(app.js)
+  ⎿  Added 6 lines, removed 1 line
+      818  
+      819    /* --- Escape key --- */
+      820    document.addEventListener('keydown', e => {
+      821 -    if (e.key === 'Escape' && state.openItemId) closeModal(); 
+      821 +    if (e.key !== 'Escape') return;                           
+      822 +    if (document.getElementById('addModalOverlay').classList.c
+          +ontains('open')) {                                            
+      823 +      closeAddModal();                                        
+      824 +    } else if (state.openItemId) {                            
+      825 +      closeModal();                                           
+      826 +    }                                                         
+      827    });
+      828  
+      829    /* --- Modal: Complete button --- */
+
+● Update(app.js)
+  ⎿  Added 26 lines
+      836      if (state.openItemId) toggleFavorite(state.openItemId);
+      837    });
+      838  
+      839 +  /* --- Modal: Delete button (custom items only) --- */      
+      840 +  document.getElementById('modalDelete').addEventListener('cli
+          +ck', () => {                                                  
+      841 +    if (state.openItemId) deleteCustomItem(state.openItemId); 
+      842 +  });                                                         
+      843 +                                                              
+      844 +  /* --- FAB --- */                                           
+      845 +  document.getElementById('fabAdd').addEventListener('click', 
+          +openAddModal);                                                
+      846 +                                                              
+      847 +  /* --- Add modal: close button & overlay click --- */       
+      848 +  document.getElementById('addModalClose').addEventListener('c
+          +lick', closeAddModal);                                        
+      849 +  document.getElementById('addModalOverlay').addEventListener(
+          +'click', e => {                                               
+      850 +    if (e.target === document.getElementById('addModalOverlay'
+          +)) closeAddModal();                                           
+      851 +  });                                                         
+      852 +                                                              
+      853 +  /* --- Add modal: type toggle --- */                        
+      854 +  document.querySelectorAll('.type-btn').forEach(btn => {     
+      855 +    btn.addEventListener('click', () => {                     
+      856 +      document.querySelectorAll('.type-btn').forEach(b => b.cl
+          +assList.remove('active'));                                    
+      857 +      btn.classList.add('active');                            
+      858 +      updateCreditLabel(btn.dataset.type);                    
+      859 +    });                                                       
+      860 +  });                                                         
+      861 +                                                              
+      862 +  /* --- Add modal: form submit --- */                        
+      863 +  document.getElementById('addForm').addEventListener('submit'
+          +, submitAddForm);                                             
+      864 +                                                              
+      865    /* --- Modal: Star rating --- */
+      866    const stars = document.querySelectorAll('#modalStars .star')
+           ;
+      867  
+
+● Done. Here's a summary of everything added:
+
+  FAB (floating action button)
+  - Fixed bottom-right, gradient pill shape — click to open the "Add a Title"
+  form
+  - Lifts and scales on hover
+
+  Add Title form
+  - Type toggle — Movie / Book (switches Director ↔ Author label automatically)
+  - Fields: Title, Genre (all 15 genres), Year, Director/Author, Description
+  - Validation with inline error messages before submitting
+  - After adding, automatically navigates to the correct tab so you can see the
+  new card right away
+
+  Custom items
+  - Saved to localStorage under a separate key (cinereads_custom_v1) so they
+  survive refreshes
+  - Show a purple left-border accent and a "Custom" dot badge on their card
+  - Show a "Custom" badge + 🗑 Delete button inside the detail modal
+  - Fully integrated with search, filters, sort (including "Recently Added"), My
+   List stats, and all favorite/rating/review features
+
+✻ Cogitated for 4m 10s
+
+❯ Ensure that the app will work on any mobile and/or different screen           
+proportions                                                                     
+
+● Read 1 file (ctrl+o to expand)
+
+● Now I have a full picture of the current CSS. I'll do a comprehensive overhaul
+   — bottom-sheet modals on mobile, proper touch targets, iOS input zoom fix,
+  stickier breakpoints for every screen size, and horizontal scroll prevention.
+
+● Update(style.css)
+  ⎿  Added 12 lines, removed 1 line
+      20    --transition: 0.2s ease;
+      21  }
+      22  
+      23 -html { scroll-behavior: smooth; }                              
+      23 +html {                                                         
+      24 +  scroll-behavior: smooth;                                     
+      25 +  overflow-x: hidden;                                          
+      26 +}                                                              
+      27  
+      28  body {
+      29    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif
+          ;
+      30    background: var(--bg);
+      31    color: var(--text);
+      32    min-height: 100vh;
+      33 +  min-height: 100dvh;                                          
+      34    line-height: 1.6;
+      35 +  overflow-x: hidden;                                          
+      36 +  -webkit-text-size-adjust: 100%;                              
+      37  }
+      38  
+      39 +/* Improve tap responsiveness everywhere */                    
+      40 +button, [role="button"], select, input, textarea, a {          
+      41 +  touch-action: manipulation;                                  
+      42 +}                                                              
+      43 +                                                               
+      44  /* ===== HEADER ===== */
+      45  header {
+      46    background: linear-gradient(135deg, #0f0f1e 0%, #1a0a2e 100%)
+          ;
+
+● Also add overscroll-behavior: contain to the modal so scrolling it doesn't
+  scroll the background page:
+
+● Update(style.css)
+  ⎿  Added 3 lines
+      454    width: 100%;
+      455    max-width: 540px;
+      456    max-height: 90vh;
+      457 +  max-height: 90dvh;                                          
+      458    overflow-y: auto;
+      459 +  overscroll-behavior: contain;                               
+      460 +  -webkit-overflow-scrolling: touch;                          
+      461    position: relative;
+      462    transform: translateY(20px) scale(0.97);
+      463    transition: transform 0.25s ease;
+
+● Now replace the entire responsive section with a comprehensive
+  multi-breakpoint version:
+
+● Update(style.css)
+  ⎿  Added 155 lines, removed 18 lines
+      1169  ::-webkit-scrollbar-track { background: transparent; }
+      1170  ::-webkit-scrollbar-thumb { background: var(--border); border
+            -radius: 4px; }
+      1171  
+      1172 +/* Disable hover lift on non-hover devices (touch screens) */
+      1173 +@media (hover: none) {                                       
+      1174 +  .card:hover          { transform: none; box-shadow: none; b
+           +order-color: var(--border); }                                
+      1175 +  .mylist-row:hover    { transform: none; }                  
+      1176 +  .fab:hover           { transform: none; box-shadow: 0 4px 2
+           +0px rgba(233,69,96,0.45); }                                  
+      1177 +  .btn-save:hover      { transform: none; opacity: 1; }      
+      1178 +}                                                            
+      1179 +                                                             
+      1180  /* ===== RESPONSIVE ===== */
+      1173 -@media (max-width: 640px) {                                  
+      1174 -  .header-inner { padding: 0 16px; }                         
+      1181 +                                                             
+      1182 +/* -- Tablet landscape (≤ 1024px) -- */                      
+      1183 +@media (max-width: 1024px) {                                 
+      1184 +  .grid { grid-template-columns: repeat(auto-fill, minmax(185
+           +px, 1fr)); }                                                 
+      1185 +}                                                            
+      1186 +                                                             
+      1187 +/* -- Tablet portrait / large phone landscape (≤ 768px) -- */
+      1188 +@media (max-width: 768px) {                                  
+      1189 +  /* Prevent iOS input zoom — inputs must be ≥ 16px */       
+      1190 +  input, select, textarea,                                   
+      1191 +  .search-wrap input,                                        
+      1192 +  .form-group input,                                         
+      1193 +  .form-group select,                                        
+      1194 +  .form-group textarea,                                      
+      1195 +  .modal-review-section textarea { font-size: 16px; }        
+      1196 +                                                             
+      1197 +  /* Header */                                               
+      1198 +  .header-inner { height: 60px; padding: 0 16px; gap: 10px; }
+      1199 +  .logo-icon { font-size: 22px; }                            
+      1200 +  .logo-text h1 { font-size: 18px; }                         
+      1201    .logo-text span { display: none; }
+      1176 -  .tab-btn { padding: 8px 10px; font-size: 12px; }           
+      1177 -  .filters-inner { padding: 0 16px; }                        
+      1178 -  .selects-wrap { width: 100%; }                             
+      1179 -  .selects-wrap select { flex: 1; min-width: 0; font-size: 12
+           -px; }                                                        
+      1180 -  main { padding: 20px 16px 60px; }                          
+      1181 -  .grid { grid-template-columns: repeat(auto-fill, minmax(160
+           -px, 1fr)); gap: 14px; }                                      
+      1182 -  .card-cover { height: 160px; font-size: 44px; }            
+      1183 -  .modal { border-radius: 14px; }                            
+      1184 -  .modal-body { padding: 16px 18px 24px; }                   
+      1185 -  .modal-info h2 { font-size: 18px; }                        
+      1186 -  .stats-inner { padding: 8px 16px; gap: 10px; }             
+      1187 -  #myListPage { padding: 24px 16px 60px; }                   
+      1188 -  .mylist-hero { grid-template-columns: 1fr; gap: 12px; }    
+      1189 -  .mysc-num { font-size: 34px; }                             
+      1202 +  .tab-btn { padding: 7px 12px; font-size: 13px; }           
+      1203 +                                                             
+      1204 +  /* Filters */                                              
+      1205 +  .filters-section { padding: 12px 0; }                      
+      1206 +  .filters-inner { padding: 0 16px; flex-direction: column; a
+           +lign-items: stretch; gap: 10px; }                            
+      1207 +  .search-wrap { min-width: 0; }                             
+      1208 +  .selects-wrap { display: grid; grid-template-columns: 1fr 1
+           +fr 1fr; gap: 8px; }                                          
+      1209 +                                                             
+      1210 +  /* Stats bar — horizontal scroll instead of wrap */        
+      1211 +  .stats-inner { padding: 8px 16px; gap: 8px; flex-wrap: nowr
+           +ap; overflow-x: auto; -webkit-overflow-scrolling: touch; }   
+      1212 +  .stats-inner::-webkit-scrollbar { display: none; }         
+      1213 +  .stat-chip { flex-shrink: 0; }                             
+      1214 +                                                             
+      1215 +  /* Grid */                                                 
+      1216 +  main { padding: 20px 16px 100px; }                         
+      1217 +  .grid { grid-template-columns: repeat(auto-fill, minmax(155
+           +px, 1fr)); gap: 14px; }                                      
+      1218 +  .card-cover { height: 165px; }                             
+      1219 +  .card-fav-btn { width: 36px; height: 36px; font-size: 16px;
+           + }                                                           
+      1220 +                                                             
+      1221 +  /* Modal → bottom sheet */                                 
+      1222 +  .modal-overlay { padding: 0; align-items: flex-end; }      
+      1223 +  .modal {                                                   
+      1224 +    border-radius: 20px 20px 0 0;                            
+      1225 +    max-width: 100%;                                         
+      1226 +    max-height: 92vh;                                        
+      1227 +    max-height: 92dvh;                                       
+      1228 +    transform: translateY(100%);                             
+      1229 +  }                                                          
+      1230 +  .modal-overlay.open .modal { transform: translateY(0); }   
+      1231 +  .modal-cover { border-radius: 20px 20px 0 0; height: 170px;
+           + }                                                           
+      1232 +  .modal-cover::after { background: linear-gradient(to bottom
+           +, transparent 40%, var(--bg3) 100%); }                       
+      1233 +  .modal::before {                                           
+      1234 +    content: '';                                             
+      1235 +    display: block;                                          
+      1236 +    width: 36px; height: 4px;                                
+      1237 +    background: var(--border);                               
+      1238 +    border-radius: 2px;                                      
+      1239 +    margin: 10px auto -6px;                                  
+      1240 +  }                                                          
+      1241 +  .modal-body { padding: 16px 20px 36px; gap: 18px; }        
+      1242 +  .modal-info h2 { font-size: 19px; }                        
+      1243 +                                                             
+      1244 +  /* Add modal → bottom sheet */                             
+      1245 +  .add-modal-header { padding: 20px 20px 14px; }             
+      1246 +  .add-form { padding: 16px 20px 36px; gap: 14px; }          
+      1247 +                                                             
+      1248 +  /* My List */                                              
+      1249 +  #myListPage { padding: 20px 16px 100px; }                  
+      1250 +  .mylist-hero { grid-template-columns: repeat(3, 1fr); gap: 
+           +10px; }                                                      
+      1251 +  .mylist-stat-card { padding: 18px 14px; }                  
+      1252 +  .mysc-num { font-size: 32px; letter-spacing: -1px; }       
+      1253 +  .mylist-breakdown { gap: 12px; }                           
+      1254 +                                                             
+      1255 +  /* FAB — sit above system nav bars */                      
+      1256 +  .fab { bottom: 24px; right: 16px; }                        
+      1257 +                                                             
+      1258 +  /* Toast — avoid FAB overlap */                            
+      1259 +  .toast { bottom: 90px; max-width: calc(100vw - 32px); white
+           +-space: normal; text-align: center; }                        
+      1260 +}                                                            
+      1261 +                                                             
+      1262 +/* -- Phone portrait (≤ 480px) -- */                         
+      1263 +@media (max-width: 480px) {                                  
+      1264 +  /* Header */                                               
+      1265 +  .header-inner { height: 54px; gap: 6px; }                  
+      1266 +  .logo-text h1 { font-size: 16px; }                         
+      1267 +  .tabs { gap: 4px; padding: 3px; }                          
+      1268 +  .tab-btn { padding: 6px 9px; font-size: 12px; }            
+      1269 +                                                             
+      1270 +  /* Filters */                                              
+      1271 +  .selects-wrap { grid-template-columns: 1fr 1fr; }          
+      1272 +  .selects-wrap select:last-child { grid-column: 1 / -1; }   
+      1273 +                                                             
+      1274 +  /* Grid — 2 fixed columns */                               
+      1275 +  main { padding: 16px 12px 100px; }                         
+      1276 +  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      1277 +  .card-cover { height: 140px; font-size: 40px; }            
+      1278 +  .card-body { padding: 10px 10px 8px; }                     
+      1279 +  .card-title { font-size: 13px; }                           
+      1280 +  .card-footer { padding: 8px 10px; }                        
+      1281 +  .card-stars { font-size: 11px; }                           
+      1282 +                                                             
+      1283 +  /* Modal */                                                
+      1284 +  .modal-cover { height: 140px; }                            
+      1285 +  .modal-cover-icon { font-size: 54px; }                     
+      1286 +  .modal-body { padding: 14px 16px 32px; gap: 16px; }        
+      1287 +  .modal-info h2 { font-size: 17px; }                        
+      1288 +  .modal-desc { font-size: 13px; }                           
+      1289 +  /* Action buttons: complete + fav each half width, delete f
+           +ull width */                                                 
+      1290 +  .modal-actions { flex-wrap: wrap; }                        
+      1291 +  .btn-complete, .btn-favorite { flex: 1 1 calc(50% - 6px); }
+      1292 +  .btn-delete { flex: 1 1 100%; text-align: center; }        
+      1293 +  .star-picker .star { font-size: 26px; }                    
+      1294 +                                                             
+      1295 +  /* FAB — icon only */                                      
+      1296 +  .fab { padding: 15px; border-radius: 50%; }                
+      1297 +  .fab-label { display: none; }                              
+      1298 +  .fab-plus { font-size: 22px; }                             
+      1299 +                                                             
+      1300 +  /* Add form */                                             
+      1301 +  .form-row { grid-template-columns: 1fr 1fr; }              
+      1302 +                                                             
+      1303 +  /* My List */                                              
+      1304 +  #myListPage { padding: 16px 12px 100px; }                  
+      1305 +  .mylist-hero { grid-template-columns: 1fr; gap: 10px; }    
+      1306 +  .mysc-num { font-size: 36px; }                             
+      1307    .mylist-breakdown { grid-template-columns: 1fr; }
+      1308 +  .mylist-header h2 { font-size: 22px; }                     
+      1309 +  .mrow-cover { width: 38px; height: 38px; font-size: 18px; }
+      1310 +  .mrow-title { font-size: 13px; }                           
+      1311  }
+      1312  
+      1193 -@media (max-width: 400px) {                                  
+      1194 -  .grid { grid-template-columns: 1fr 1fr; gap: 12px; }       
+      1313 +/* -- Small phone (≤ 360px) -- */                            
+      1314 +@media (max-width: 360px) {                                  
+      1315 +  .logo-icon { display: none; }                              
+      1316 +  .tab-btn { padding: 6px 7px; font-size: 11px; }            
+      1317 +  .grid { gap: 8px; }                                        
+      1318 +  .card-cover { height: 120px; font-size: 34px; }            
+      1319 +  .card-body { padding: 8px; }                               
+      1320 +  .card-title { font-size: 12px; }                           
+      1321 +  .modal-body { padding: 12px 14px 28px; }                   
+      1322 +  .star-picker .star { font-size: 23px; gap: 4px; }          
+      1323  }
+      1324 +                                                             
+      1325 +/* -- Landscape phone (short viewport) -- */                 
+      1326 +@media (max-height: 500px) and (orientation: landscape) {    
+      1327 +  header { position: relative; }                             
+      1328 +  .modal-cover { height: 110px; }                            
+      1329 +  .modal-cover-icon { font-size: 44px; }                     
+      1330 +  .modal { max-height: 96vh; max-height: 96dvh; }            
+      1331 +  .add-form { gap: 10px; }                                   
+      1332 +}                                                            
+
+● Also add the viewport-fit=cover meta tag to handle notched phones (iPhone X+,
+  Android cutouts) and a safe-area fix for the FAB:
+
+● Update(index.html)
+  ⎿  Added 5 lines, removed 1 line
+       2  <html lang="en">
+       3  <head>
+       4    <meta charset="UTF-8">
+       5 -  <meta name="viewport" content="width=device-width, initial-sc
+         -ale=1.0">                                                      
+       5 +  <meta name="viewport" content="width=device-width, initial-sc
+         +ale=1.0, viewport-fit=cover">                                  
+       6 +  <meta name="theme-color" content="#0d0d1a">                  
+       7 +  <meta name="mobile-web-app-capable" content="yes">           
+       8 +  <meta name="apple-mobile-web-app-capable" content="yes">     
+       9 +  <meta name="apple-mobile-web-app-status-bar-style" content="b
+         +lack-translucent">                                             
+      10    <title>Reel&amp;Reed &mdash; Movie &amp; Book Tracker</title>
+      11    <link rel="stylesheet" href="style.css">
+      12  </head>
+
+● Now add safe-area inset support to the FAB and modal so they clear notches and
+   home bars:
+
+● Update(style.css)
+  ⎿  Added 2 lines, removed 2 lines
+      665  /* ===== FAB ===== */
+      666  .fab {
+      667    position: fixed;
+      668 -  bottom: 32px;                                               
+      669 -  right: 32px;                                                
+      668 +  bottom: max(32px, env(safe-area-inset-bottom, 0px) + 16px); 
+      669 +  right: max(32px, env(safe-area-inset-right, 0px) + 16px);   
+      670    z-index: 150;
+      671    display: flex;
+      672    align-items: center;
+
+● Update(style.css)
+  ⎿  Added 1 line, removed 1 line
+      722  }
+      723  
+      724  .add-form {
+      725 -  padding: 20px 24px 28px;                                    
+      725 +  padding: 20px 24px calc(28px + env(safe-area-inset-bottom, 0
+          +px));                                                         
+      726    display: flex;
+      727    flex-direction: column;
+      728    gap: 16px;
+
+● Update(style.css)
+  ⎿  Added 1 line, removed 1 line
+      517  }
+      518  
+      519  .modal-body {
+      520 -  padding: 20px 24px 28px;                                    
+      520 +  padding: 20px 24px calc(28px + env(safe-area-inset-bottom, 0
+          +px));                                                         
+      521    display: flex;
+      522    flex-direction: column;
+      523    gap: 22px;
+
+● Done. Here's a breakdown of every mobile/responsive improvement made:
+
+  Breakpoints (4 tiers)
+
+  ┌────────────────────────────┬────────────────────────────────────────┐
+  │         Breakpoint         │                 Target                 │
+  ├────────────────────────────┼────────────────────────────────────────┤
+  │ ≤ 1024px                   │ Tablets landscape                      │
+  ├────────────────────────────┼────────────────────────────────────────┤
+  │ ≤ 768px                    │ Tablets portrait, large phones         │
+  ├────────────────────────────┼────────────────────────────────────────┤
+  │ ≤ 480px                    │ Phones portrait                        │
+  ├────────────────────────────┼────────────────────────────────────────┤
+  │ ≤ 360px                    │ Small phones (Galaxy A, older iPhones) │
+  ├────────────────────────────┼────────────────────────────────────────┤
+  │ landscape + height ≤ 500px │ Landscape phone orientation            │
+  └────────────────────────────┴────────────────────────────────────────┘
+
+  Key fixes per category
+
+  - iOS input zoom — all input/select/textarea bump to font-size: 16px on mobile
+   to prevent Safari auto-zoom on focus
+  - Modals → bottom sheets — on ≤ 768px both modals slide up from the bottom,
+  full width, rounded top corners, with a drag-handle visual indicator
+  - Notch / home bar safety — viewport-fit=cover, FAB and modal bottom padding
+  use env(safe-area-inset-bottom) so nothing hides behind iPhone notches or
+  Android cutouts
+  - Touch targets — fav button grows to 36×36px on tablet, FAB stays large;
+  touch-action: manipulation removes the 300ms tap delay everywhere
+  - Hover effects — wrapped in @media (hover: none) so lift/glow animations
+  don't get "stuck" after taps on touchscreens
+  - Stats bar — switches to horizontal scroll (no wrapping) on mobile so chips
+  stay single-line
+  - FAB — collapses to a round icon-only button (no label) on ≤ 480px to save
+  space
+  - Header — gracefully shrinks across all sizes; logo subtitle hides early, tab
+   font reduces, then logo icon hides at 360px
+  - Grid — fluid columns down to 2-fixed at ≤ 480px
+  - Filters — genre/status on one row, sort full-width below on small phones
+  - My List hero — 3-col → 1-col at ≤ 480px
+  - min-height: 100dvh — uses the dynamic viewport unit so the app fills
+  correctly on mobile browsers where the address bar shows/hides
+  - theme-color — sets the browser chrome color to match the app background on
+  Android
+
+✻ Cogitated for 3m 2s
+
+❯ /export                                                                       
+  ⎿  Conversation exported to:
+     2026-03-13-210455-can-you-create-a-website-app-for-a-movie-book-tra.txt
+
+❯ Can you make it so the user can create a profile with editable info or        
+avatar?                                                                         
+
+● Read 1 file (ctrl+o to expand)
+
+● Good, I have everything I need. Now I'll implement the full profile feature
+  across all three files.
+
+● Update(index.html)
+  ⎿  Added 1 line
+      27          <button class="tab-btn" data-tab="books">&#128218; Book
+          s</button>
+      28          <button class="tab-btn" data-tab="mylist">&#128203; My 
+          List</button>
+      29        </nav>
+      30 +      <button class="profile-hdr-btn" id="profileBtn" aria-labe
+         +l="Profile" title="Profile">&#128100;</button>                 
+      31      </div>
+      32    </header>
+      33  
+
+● Update(index.html)
+  ⎿  Added 3 lines
+      69    <!-- My List Page -->
+      70    <div id="myListPage" style="display:none"></div>
+      71  
+      72 +  <!-- Profile Page -->                                        
+      73 +  <div id="profilePage" style="display:none"></div>            
+      74 +                                                               
+      75    <!-- Grid -->
+      76    <main id="browseMain">
+      77      <div class="grid" id="itemGrid"></div>
+
+● Now add all profile CSS before the scrollbar section:
+
+● Update(style.css)
+  ⎿  Added 275 lines
+      1164    white-space: nowrap;
+      1165  }
+      1166  
+      1167 +/* ===== PROFILE PAGE ===== */                               
+      1168 +#profilePage {                                               
+      1169 +  max-width: 680px;                                          
+      1170 +  margin: 0 auto;                                            
+      1171 +  padding: 40px 24px 100px;                                  
+      1172 +}                                                            
+      1173 +                                                             
+      1174 +.profile-inner {                                             
+      1175 +  display: flex;                                             
+      1176 +  flex-direction: column;                                    
+      1177 +  gap: 20px;                                                 
+      1178 +}                                                            
+      1179 +                                                             
+      1180 +/* Profile header button (top-right of app header) */        
+      1181 +.profile-hdr-btn {                                           
+      1182 +  width: 38px;                                               
+      1183 +  height: 38px;                                              
+      1184 +  min-width: 38px;                                           
+      1185 +  border-radius: 50%;                                        
+      1186 +  border: 2px solid var(--border);                           
+      1187 +  background: var(--bg3);                                    
+      1188 +  font-size: 19px;                                           
+      1189 +  cursor: pointer;                                           
+      1190 +  display: flex;                                             
+      1191 +  align-items: center;                                       
+      1192 +  justify-content: center;                                   
+      1193 +  transition: all var(--transition);                         
+      1194 +  padding: 0;                                                
+      1195 +  line-height: 1;                                            
+      1196 +  flex-shrink: 0;                                            
+      1197 +}                                                            
+      1198 +                                                             
+      1199 +.profile-hdr-btn:hover { border-color: var(--accent); backgro
+           +und: rgba(233,69,96,0.1); }                                  
+      1200 +.profile-hdr-btn.active {                                    
+      1201 +  border-color: var(--accent);                               
+      1202 +  background: rgba(233,69,96,0.12);                          
+      1203 +  box-shadow: 0 0 0 3px rgba(233,69,96,0.2);                 
+      1204 +}                                                            
+      1205 +                                                             
+      1206 +/* Avatar circle */                                          
+      1207 +.avatar-circle {                                             
+      1208 +  width: 88px;                                               
+      1209 +  height: 88px;                                              
+      1210 +  border-radius: 50%;                                        
+      1211 +  background: linear-gradient(135deg, var(--accent), var(--ac
+           +cent2));                                                     
+      1212 +  display: flex;                                             
+      1213 +  align-items: center;                                       
+      1214 +  justify-content: center;                                   
+      1215 +  font-size: 46px;                                           
+      1216 +  border: 3px solid rgba(255,255,255,0.12);                  
+      1217 +  flex-shrink: 0;                                            
+      1218 +  position: relative;                                        
+      1219 +  line-height: 1;                                            
+      1220 +  user-select: none;                                         
+      1221 +}                                                            
+      1222 +                                                             
+      1223 +.avatar-circle.clickable { cursor: pointer; transition: trans
+           +form var(--transition), box-shadow var(--transition); }      
+      1224 +.avatar-circle.clickable:hover { transform: scale(1.05); box-
+           +shadow: 0 0 0 4px rgba(233,69,96,0.3); }                     
+      1225 +                                                             
+      1226 +/* Profile view card */                                      
+      1227 +.profile-view-card {                                         
+      1228 +  background: var(--card);                                   
+      1229 +  border: 1px solid var(--border);                           
+      1230 +  border-radius: var(--radius);                              
+      1231 +  padding: 36px 24px 28px;                                   
+      1232 +  display: flex;                                             
+      1233 +  flex-direction: column;                                    
+      1234 +  align-items: center;                                       
+      1235 +  text-align: center;                                        
+      1236 +  gap: 10px;                                                 
+      1237 +}                                                            
+      1238 +                                                             
+      1239 +.profile-name {                                              
+      1240 +  font-size: 24px;                                           
+      1241 +  font-weight: 800;                                          
+      1242 +  color: var(--text);                                        
+      1243 +  line-height: 1.2;                                          
+      1244 +  margin-top: 4px;                                           
+      1245 +}                                                            
+      1246 +                                                             
+      1247 +.profile-bio {                                               
+      1248 +  font-size: 14px;                                           
+      1249 +  color: var(--text2);                                       
+      1250 +  line-height: 1.6;                                          
+      1251 +  max-width: 420px;                                          
+      1252 +}                                                            
+      1253 +                                                             
+      1254 +.profile-bio.muted { color: var(--text3); font-style: italic;
+           + }                                                           
+      1255 +                                                             
+      1256 +.profile-genre-chip {                                        
+      1257 +  display: inline-flex;                                      
+      1258 +  align-items: center;                                       
+      1259 +  gap: 6px;                                                  
+      1260 +  background: var(--bg3);                                    
+      1261 +  border: 1px solid var(--border);                           
+      1262 +  color: var(--text2);                                       
+      1263 +  padding: 5px 14px;                                         
+      1264 +  border-radius: 20px;                                       
+      1265 +  font-size: 13px;                                           
+      1266 +  font-weight: 600;                                          
+      1267 +}                                                            
+      1268 +                                                             
+      1269 +.profile-since {                                             
+      1270 +  font-size: 12px;                                           
+      1271 +  color: var(--text3);                                       
+      1272 +  margin-top: 2px;                                           
+      1273 +}                                                            
+      1274 +                                                             
+      1275 +.btn-edit-profile {                                          
+      1276 +  margin-top: 10px;                                          
+      1277 +  background: var(--bg3);                                    
+      1278 +  border: 1px solid var(--border);                           
+      1279 +  color: var(--text2);                                       
+      1280 +  padding: 9px 20px;                                         
+      1281 +  border-radius: 8px;                                        
+      1282 +  font-size: 13px;                                           
+      1283 +  font-weight: 600;                                          
+      1284 +  cursor: pointer;                                           
+      1285 +  transition: all var(--transition);                         
+      1286 +}                                                            
+      1287 +                                                             
+      1288 +.btn-edit-profile:hover { border-color: var(--accent); color:
+           + var(--text); }                                              
+      1289 +                                                             
+      1290 +/* Profile stats grid */                                     
+      1291 +.profile-stats-card {                                        
+      1292 +  background: var(--card);                                   
+      1293 +  border: 1px solid var(--border);                           
+      1294 +  border-radius: var(--radius);                              
+      1295 +  padding: 20px;                                             
+      1296 +}                                                            
+      1297 +                                                             
+      1298 +.profile-section-label {                                     
+      1299 +  font-size: 11px;                                           
+      1300 +  font-weight: 700;                                          
+      1301 +  color: var(--text3);                                       
+      1302 +  text-transform: uppercase;                                 
+      1303 +  letter-spacing: 0.7px;                                     
+      1304 +  margin-bottom: 14px;                                       
+      1305 +}                                                            
+      1306 +                                                             
+      1307 +.pstats-grid {                                               
+      1308 +  display: grid;                                             
+      1309 +  grid-template-columns: repeat(4, 1fr);                     
+      1310 +  gap: 10px;                                                 
+      1311 +}                                                            
+      1312 +                                                             
+      1313 +.pstat {                                                     
+      1314 +  background: var(--bg2);                                    
+      1315 +  border: 1px solid var(--border);                           
+      1316 +  border-radius: 10px;                                       
+      1317 +  padding: 14px 8px;                                         
+      1318 +  text-align: center;                                        
+      1319 +}                                                            
+      1320 +                                                             
+      1321 +.pstat-num {                                                 
+      1322 +  font-size: 26px;                                           
+      1323 +  font-weight: 900;                                          
+      1324 +  color: var(--text);                                        
+      1325 +  letter-spacing: -1px;                                      
+      1326 +  line-height: 1;                                            
+      1327 +}                                                            
+      1328 +                                                             
+      1329 +.pstat-label {                                               
+      1330 +  font-size: 10px;                                           
+      1331 +  color: var(--text3);                                       
+      1332 +  text-transform: uppercase;                                 
+      1333 +  letter-spacing: 0.4px;                                     
+      1334 +  margin-top: 5px;                                           
+      1335 +}                                                            
+      1336 +                                                             
+      1337 +/* Profile edit card */                                      
+      1338 +.profile-edit-card {                                         
+      1339 +  background: var(--card);                                   
+      1340 +  border: 1px solid var(--border);                           
+      1341 +  border-radius: var(--radius);                              
+      1342 +  padding: 28px 24px;                                        
+      1343 +}                                                            
+      1344 +                                                             
+      1345 +.profile-edit-card h2 {                                      
+      1346 +  font-size: 18px;                                           
+      1347 +  font-weight: 800;                                          
+      1348 +  margin-bottom: 22px;                                       
+      1349 +  color: var(--text);                                        
+      1350 +}                                                            
+      1351 +                                                             
+      1352 +.avatar-edit-row {                                           
+      1353 +  display: flex;                                             
+      1354 +  align-items: center;                                       
+      1355 +  gap: 16px;                                                 
+      1356 +  margin-bottom: 20px;                                       
+      1357 +}                                                            
+      1358 +                                                             
+      1359 +.avatar-edit-info { display: flex; flex-direction: column; ga
+           +p: 6px; }                                                    
+      1360 +                                                             
+      1361 +.avatar-edit-info span {                                     
+      1362 +  font-size: 12px;                                           
+      1363 +  color: var(--text3);                                       
+      1364 +}                                                            
+      1365 +                                                             
+      1366 +.btn-change-avatar {                                         
+      1367 +  background: var(--bg3);                                    
+      1368 +  border: 1px solid var(--border);                           
+      1369 +  color: var(--text2);                                       
+      1370 +  padding: 7px 14px;                                         
+      1371 +  border-radius: 7px;                                        
+      1372 +  font-size: 12px;                                           
+      1373 +  font-weight: 600;                                          
+      1374 +  cursor: pointer;                                           
+      1375 +  transition: all var(--transition);                         
+      1376 +}                                                            
+      1377 +                                                             
+      1378 +.btn-change-avatar:hover { border-color: var(--accent2); colo
+           +r: var(--text); }                                            
+      1379 +                                                             
+      1380 +/* Avatar picker grid */                                     
+      1381 +.avatar-picker-grid {                                        
+      1382 +  display: none;                                             
+      1383 +  grid-template-columns: repeat(8, 1fr);                     
+      1384 +  gap: 6px;                                                  
+      1385 +  background: var(--bg2);                                    
+      1386 +  border: 1px solid var(--border);                           
+      1387 +  border-radius: 10px;                                       
+      1388 +  padding: 12px;                                             
+      1389 +  margin-bottom: 20px;                                       
+      1390 +}                                                            
+      1391 +                                                             
+      1392 +.avatar-picker-grid.open { display: grid; }                  
+      1393 +                                                             
+      1394 +.avatar-opt {                                                
+      1395 +  width: 100%;                                               
+      1396 +  aspect-ratio: 1;                                           
+      1397 +  border-radius: 8px;                                        
+      1398 +  border: 2px solid transparent;                             
+      1399 +  background: var(--bg3);                                    
+      1400 +  font-size: 20px;                                           
+      1401 +  cursor: pointer;                                           
+      1402 +  display: flex;                                             
+      1403 +  align-items: center;                                       
+      1404 +  justify-content: center;                                   
+      1405 +  transition: all var(--transition);                         
+      1406 +  padding: 0;                                                
+      1407 +  line-height: 1;                                            
+      1408 +}                                                            
+      1409 +                                                             
+      1410 +.avatar-opt:hover { background: rgba(255,255,255,0.08); borde
+           +r-color: rgba(255,255,255,0.12); }                           
+      1411 +.avatar-opt.selected { border-color: var(--accent); backgroun
+           +d: rgba(233,69,96,0.12); }                                   
+      1412 +                                                             
+      1413 +/* Edit form */                                              
+      1414 +.profile-edit-form {                                         
+      1415 +  display: flex;                                             
+      1416 +  flex-direction: column;                                    
+      1417 +  gap: 16px;                                                 
+      1418 +}                                                            
+      1419 +                                                             
+      1420 +.profile-edit-actions {                                      
+      1421 +  display: flex;                                             
+      1422 +  gap: 10px;                                                 
+      1423 +  margin-top: 4px;                                           
+      1424 +}                                                            
+      1425 +                                                             
+      1426 +.profile-edit-actions .btn-save { flex: 1; }                 
+      1427 +                                                             
+      1428 +.btn-cancel-edit {                                           
+      1429 +  background: none;                                          
+      1430 +  border: 1px solid var(--border);                           
+      1431 +  color: var(--text2);                                       
+      1432 +  padding: 10px 20px;                                        
+      1433 +  border-radius: 8px;                                        
+      1434 +  font-size: 14px;                                           
+      1435 +  font-weight: 600;                                          
+      1436 +  cursor: pointer;                                           
+      1437 +  transition: all var(--transition);                         
+      1438 +}                                                            
+      1439 +                                                             
+      1440 +.btn-cancel-edit:hover { border-color: rgba(255,255,255,0.2);
+           + color: var(--text); }                                       
+      1441 +                                                             
+      1442  /* ===== SCROLLBAR ===== */
+      1443  ::-webkit-scrollbar { width: 6px; height: 6px; }
+      1444  ::-webkit-scrollbar-track { background: transparent; }
+
+● Add profile page responsive rules inside the existing ≤ 768px and ≤ 480px
+  blocks:
+
+● Update(style.css)
+  ⎿  Added 6 lines
+      1527    .mysc-num { font-size: 32px; letter-spacing: -1px; }
+      1528    .mylist-breakdown { gap: 12px; }
+      1529  
+      1530 +  /* Profile page */                                         
+      1531 +  #profilePage { padding: 24px 16px 100px; }                 
+      1532 +  .profile-view-card { padding: 28px 18px 22px; }            
+      1533 +  .profile-edit-card { padding: 22px 18px; }                 
+      1534 +  .avatar-picker-grid { grid-template-columns: repeat(6, 1fr)
+           +; }                                                          
+      1535 +                                                             
+      1536    /* FAB — sit above system nav bars */
+      1537    .fab { bottom: 24px; right: 16px; }
+      1538  
+
+● Update(style.css)
+  ⎿  Added 8 lines
+      1589    .mylist-header h2 { font-size: 22px; }
+      1590    .mrow-cover { width: 38px; height: 38px; font-size: 18px; }
+      1591    .mrow-title { font-size: 13px; }
+      1592 +                                                             
+      1593 +  /* Profile */                                              
+      1594 +  #profilePage { padding: 16px 12px 100px; }                 
+      1595 +  .pstats-grid { grid-template-columns: repeat(2, 1fr); }    
+      1596 +  .profile-name { font-size: 20px; }                         
+      1597 +  .avatar-circle { width: 72px; height: 72px; font-size: 38px
+           +; }                                                          
+      1598 +  .avatar-picker-grid { grid-template-columns: repeat(5, 1fr)
+           +; }                                                          
+      1599 +  .profile-edit-actions { flex-direction: column; }          
+      1600  }
+      1601  
+      1602  /* -- Small phone (≤ 360px) -- */
+
+● Now add everything to app.js — constants, storage, render functions, and event
+   wiring:
+
+● Update(app.js)
+  ⎿  Added 8 lines
+      65  const RATING_LABELS = { 1: 'Poor', 2: 'Fair', 3: 'Good', 4: 'Gr
+          eat', 5: 'Excellent' };
+      66  const STORAGE_KEY   = 'cinereads_v1';
+      67  const CUSTOM_KEY    = 'cinereads_custom_v1';
+      68 +const PROFILE_KEY   = 'cinereads_profile_v1';                  
+      69  
+      70 +const AVATARS = [                                              
+      71 +  '🎬','📚','🎭','🚀','👾','🔮','🌟','🦋',                     
+      72 +  '🐉','🎮','🎵','🌈','🔥','⚡','🌙','☀️',                     
+      73 +  '🎪','🏆','👑','🦊','🐺','🦁','🎸','🎨',                     
+      74 +  '🌺','🍀','🌊','⚔️','🎯','🦄','🤖','🎃',                     
+      75 +];                                                             
+      76 +                                                               
+      77  /* ---- App state ---- */
+      78  let state = {
+      79    currentPage: 'browse',   // 'browse' | 'mylist'
+
+● Update(app.js)
+  ⎿  Added 10 lines, removed 8 lines
+      76  
+      77  /* ---- App state ---- */
+      78  let state = {
+      79 -  currentPage: 'browse',   // 'browse' | 'mylist'              
+      80 -  currentTab:  'movies',                                       
+      81 -  search:      '',                                             
+      82 -  genreFilter: 'all',                                          
+      83 -  statusFilter:'all',                                          
+      84 -  sortFilter:  'default',                                      
+      85 -  openItemId:  null,                                           
+      86 -  hoverRating: 0,                                              
+      79 +  currentPage:    'browse',   // 'browse' | 'mylist' | 'profile
+         +'                                                              
+      80 +  currentTab:     'movies',                                    
+      81 +  search:         '',                                          
+      82 +  genreFilter:    'all',                                       
+      83 +  statusFilter:   'all',                                       
+      84 +  sortFilter:     'default',                                   
+      85 +  openItemId:     null,                                        
+      86 +  hoverRating:    0,                                           
+      87 +  editingProfile: false,                                       
+      88 +  pendingAvatar:  null,                                        
+      89  };
+      90  
+      91  /* ---- User data (persisted) ---- */
+
+● Update(app.js)
+  ⎿  Added 3 lines
+       95  /* ---- Custom items (persisted) ---- */
+       96  let customItems = [];
+       97  
+       98 +/* ---- Profile (persisted) ---- */                           
+       99 +let profileData = {};                                         
+      100 +                                                              
+      101  /* ======================================================
+      102     STORAGE
+      103  ====================================================== */
+
+● Update(app.js)
+  ⎿  Added 24 lines
+      139    return [...CATALOG, ...customItems];
+      140  }
+      141  
+      142 +function loadProfileData() {                                  
+      143 +  try {                                                       
+      144 +    const raw = localStorage.getItem(PROFILE_KEY);            
+      145 +    profileData = raw ? JSON.parse(raw) : {};                 
+      146 +  } catch {                                                   
+      147 +    profileData = {};                                         
+      148 +  }                                                           
+      149 +}                                                             
+      150 +                                                              
+      151 +function saveProfileData() {                                  
+      152 +  try {                                                       
+      153 +    localStorage.setItem(PROFILE_KEY, JSON.stringify(profileDa
+          +ta));                                                         
+      154 +  } catch {                                                   
+      155 +    console.warn('Reel&Reed: localStorage write failed (profil
+          +e).');                                                        
+      156 +  }                                                           
+      157 +}                                                             
+      158 +                                                              
+      159 +function updateProfileBtn() {                                 
+      160 +  const btn = document.getElementById('profileBtn');          
+      161 +  if (!btn) return;                                           
+      162 +  btn.textContent = profileData.avatar || '👤';               
+      163 +  btn.classList.toggle('active', state.currentPage === 'profil
+          +e');                                                          
+      164 +}                                                             
+      165 +                                                              
+      166  function getItem(id) {
+      167    return userData[id] || { favorite: false, completed: false, 
+           rating: 0, review: '' };
+      168  }
+
+● Now update showPage() to handle the profile page:
+
+● Update(app.js)
+  ⎿  Added 13 lines, removed 6 lines
+      607  ====================================================== */
+      608  function showPage(page) {
+      609    state.currentPage = page;
+      610 -  const isMyList = page === 'mylist';                         
+      611 -  document.getElementById('filtersSection').style.display = is
+          -MyList ? 'none' : '';                                         
+      612 -  document.getElementById('statsSection').style.display   = is
+          -MyList ? 'none' : '';                                         
+      613 -  document.getElementById('browseMain').style.display     = is
+          -MyList ? 'none' : '';                                         
+      614 -  document.getElementById('myListPage').style.display     = is
+          -MyList ? '' : 'none';                                         
+      615 -  if (isMyList) renderMyList();                               
+      610 +  const isBrowse  = page === 'browse';                        
+      611 +  const isMyList  = page === 'mylist';                        
+      612 +  const isProfile = page === 'profile';                       
+      613 +                                                              
+      614 +  document.getElementById('filtersSection').style.display = is
+          +Browse  ? '' : 'none';                                        
+      615 +  document.getElementById('statsSection').style.display   = is
+          +Browse  ? '' : 'none';                                        
+      616 +  document.getElementById('browseMain').style.display     = is
+          +Browse  ? '' : 'none';                                        
+      617 +  document.getElementById('myListPage').style.display     = is
+          +MyList  ? '' : 'none';                                        
+      618 +  document.getElementById('profilePage').style.display    = is
+          +Profile ? '' : 'none';                                        
+      619 +                                                              
+      620 +  if (isMyList)  renderMyList();                              
+      621 +  if (isProfile) renderProfilePage();                         
+      622 +  updateProfileBtn();                                         
+      623  }
+      624  
+      625  /* ======================================================
+
+● Now add the full renderProfilePage() function right before the UTILITY
+  section:
+
+● Update(app.js)
+  ⎿  Added 175 lines
+      773  }
+      774  
+      775  /* ======================================================
+      776 +   PROFILE PAGE                                               
+      777 +====================================================== */     
+      778 +function renderProfilePage() {                                
+      779 +  const p    = profileData;                                   
+      780 +  const page = document.getElementById('profilePage');        
+      781 +                                                              
+      782 +  if (state.editingProfile) {                                 
+      783 +    const currentAvatar = state.pendingAvatar || p.avatar || '
+          +🎬';                                                          
+      784 +                                                              
+      785 +    page.innerHTML = `                                        
+      786 +      <div class="profile-inner">                             
+      787 +        <div class="profile-edit-card">                       
+      788 +          <h2>Edit Profile</h2>                               
+      789 +                                                              
+      790 +          <div class="avatar-edit-row">                       
+      791 +            <div class="avatar-circle clickable" id="editAvata
+          +rCircle">${currentAvatar}</div>                               
+      792 +            <div class="avatar-edit-info">                    
+      793 +              <span>Your avatar</span>                        
+      794 +              <button class="btn-change-avatar" id="btnToggleP
+          +icker">Change Avatar</button>                                 
+      795 +            </div>                                            
+      796 +          </div>                                              
+      797 +                                                              
+      798 +          <div class="avatar-picker-grid" id="avatarPickerGrid
+          +">                                                            
+      799 +            ${AVATARS.map(a =>                                
+      800 +              `<button class="avatar-opt${a === currentAvatar 
+          +? ' selected' : ''}" data-avatar="${a}" aria-label="${a}">${a}
+          +</button>`                                                    
+      801 +            ).join('')}                                       
+      802 +          </div>                                              
+      803 +                                                              
+      804 +          <div class="profile-edit-form">                     
+      805 +            <div class="form-group">                          
+      806 +              <label for="editName">Display Name <span class="
+          +required">*</span></label>                                    
+      807 +              <input type="text" id="editName" value="${escHtm
+          +l(p.name || '')}" placeholder="Your name" maxlength="40" autoc
+          +omplete="off">                                                
+      808 +            </div>                                            
+      809 +            <div class="form-group">                          
+      810 +              <label for="editBio">Bio</label>                
+      811 +              <textarea id="editBio" rows="3" placeholder="Tel
+          +l us about yourself&hellip;" maxlength="200">${escHtml(p.bio |
+          +| '')}</textarea>                                             
+      812 +            </div>                                            
+      813 +            <div class="form-group">                          
+      814 +              <label for="editGenre">Favorite Genre</label>   
+      815 +              <select id="editGenre">                         
+      816 +                <option value="">No preference</option>       
+      817 +                ${Object.keys(GENRE_CONFIG).sort().map(g =>   
+      818 +                  `<option value="${g}"${g === p.favoriteGenre
+          + ? ' selected' : ''}>${g}</option>`                           
+      819 +                ).join('')}                                   
+      820 +              </select>                                       
+      821 +            </div>                                            
+      822 +          </div>                                              
+      823 +                                                              
+      824 +          <div class="profile-edit-actions">                  
+      825 +            <button class="btn-save" id="btnSaveProfile">Save 
+          +Changes</button>                                              
+      826 +            <button class="btn-cancel-edit" id="btnCancelProfi
+          +le">Cancel</button>                                           
+      827 +          </div>                                              
+      828 +        </div>                                                
+      829 +      </div>                                                  
+      830 +    `;                                                        
+      831 +                                                              
+      832 +    // Avatar picker toggle                                   
+      833 +    document.getElementById('btnTogglePicker').addEventListene
+          +r('click', () => {                                            
+      834 +      document.getElementById('avatarPickerGrid').classList.to
+          +ggle('open');                                                 
+      835 +    });                                                       
+      836 +    document.getElementById('editAvatarCircle').addEventListen
+          +er('click', () => {                                           
+      837 +      document.getElementById('avatarPickerGrid').classList.to
+          +ggle('open');                                                 
+      838 +    });                                                       
+      839 +                                                              
+      840 +    // Avatar option selection                                
+      841 +    page.querySelectorAll('.avatar-opt').forEach(btn => {     
+      842 +      btn.addEventListener('click', () => {                   
+      843 +        page.querySelectorAll('.avatar-opt').forEach(b => b.cl
+          +assList.remove('selected'));                                  
+      844 +        btn.classList.add('selected');                        
+      845 +        state.pendingAvatar = btn.dataset.avatar;             
+      846 +        document.getElementById('editAvatarCircle').textConten
+          +t = btn.dataset.avatar;                                       
+      847 +      });                                                     
+      848 +    });                                                       
+      849 +                                                              
+      850 +    // Save                                                   
+      851 +    document.getElementById('btnSaveProfile').addEventListener
+          +('click', () => {                                             
+      852 +      const name = document.getElementById('editName').value.t
+          +rim();                                                        
+      853 +      if (!name) { showToast('Display name is required'); retu
+          +rn; }                                                         
+      854 +      profileData = {                                         
+      855 +        ...profileData,                                       
+      856 +        name,                                                 
+      857 +        bio:           document.getElementById('editBio').valu
+          +e.trim(),                                                     
+      858 +        favoriteGenre: document.getElementById('editGenre').va
+          +lue,                                                          
+      859 +        avatar:        state.pendingAvatar || p.avatar || '🎬'
+          +,                                                             
+      860 +        joinedAt:      profileData.joinedAt || Date.now(),    
+      861 +      };                                                      
+      862 +      saveProfileData();                                      
+      863 +      state.editingProfile = false;                           
+      864 +      state.pendingAvatar  = null;                            
+      865 +      updateProfileBtn();                                     
+      866 +      renderProfilePage();                                    
+      867 +      showToast('Profile saved!');                            
+      868 +    });                                                       
+      869 +                                                              
+      870 +    // Cancel                                                 
+      871 +    document.getElementById('btnCancelProfile').addEventListen
+          +er('click', () => {                                           
+      872 +      state.editingProfile = false;                           
+      873 +      state.pendingAvatar  = null;                            
+      874 +      renderProfilePage();                                    
+      875 +    });                                                       
+      876 +                                                              
+      877 +    // Focus name input                                       
+      878 +    setTimeout(() => {                                        
+      879 +      const el = document.getElementById('editName');         
+      880 +      if (el) el.focus();                                     
+      881 +    }, 60);                                                   
+      882 +                                                              
+      883 +  } else {                                                    
+      884 +    // --- VIEW MODE ---                                      
+      885 +    const all       = getAllItems();                          
+      886 +    const ratedAll  = all.filter(c => getItem(c.id).rating > 0
+          +);                                                            
+      887 +    const avgRating = ratedAll.length                         
+      888 +      ? (ratedAll.reduce((s, c) => s + getItem(c.id).rating, 0
+          +) / ratedAll.length).toFixed(1)                               
+      889 +      : null;                                                 
+      890 +    const completed = all.filter(c => getItem(c.id).completed)
+          +.length;                                                      
+      891 +    const favorites = all.filter(c => getItem(c.id).favorite).
+          +length;                                                       
+      892 +    const joinDate  = p.joinedAt                              
+      893 +      ? new Date(p.joinedAt).toLocaleDateString('en-US', { mon
+          +th: 'long', day: 'numeric', year: 'numeric' })                
+      894 +      : null;                                                 
+      895 +    const favCfg = p.favoriteGenre && GENRE_CONFIG[p.favoriteG
+          +enre];                                                        
+      896 +                                                              
+      897 +    // First-time experience — prompt to set up               
+      898 +    const isNew = !p.name;                                    
+      899 +                                                              
+      900 +    page.innerHTML = `                                        
+      901 +      <div class="profile-inner">                             
+      902 +        <div class="profile-view-card">                       
+      903 +          <div class="avatar-circle">${p.avatar || '🎬'}</div>
+      904 +          <h2 class="profile-name">${escHtml(p.name || 'New Vi
+          +ewer')}</h2>                                                  
+      905 +          ${p.bio                                             
+      906 +            ? `<p class="profile-bio">${escHtml(p.bio)}</p>`  
+      907 +            : `<p class="profile-bio muted">${isNew ? 'Set up 
+          +your profile to personalize your experience.' : 'No bio yet.'}
+          +</p>`                                                         
+      908 +          }                                                   
+      909 +          ${p.favoriteGenre && favCfg                         
+      910 +            ? `<div class="profile-genre-chip">${favCfg.emoji}
+          + ${p.favoriteGenre}</div>`                                    
+      911 +            : ''                                              
+      912 +          }                                                   
+      913 +          ${joinDate ? `<p class="profile-since">Member since 
+          +${joinDate}</p>` : ''}                                        
+      914 +          <button class="btn-edit-profile" id="btnEditProfile"
+          +>                                                             
+      915 +            ${isNew ? '&#9998; Set Up Profile' : '&#9998; Edit
+          + Profile'}                                                    
+      916 +          </button>                                           
+      917 +        </div>                                                
+      918 +                                                              
+      919 +        <div class="profile-stats-card">                      
+      920 +          <div class="profile-section-label">Your Activity</di
+          +v>                                                            
+      921 +          <div class="pstats-grid">                           
+      922 +            <div class="pstat">                               
+      923 +              <div class="pstat-num">${all.length}</div>      
+      924 +              <div class="pstat-label">Titles</div>           
+      925 +            </div>                                            
+      926 +            <div class="pstat">                               
+      927 +              <div class="pstat-num">${completed}</div>       
+      928 +              <div class="pstat-label">Completed</div>        
+      929 +            </div>                                            
+      930 +            <div class="pstat">                               
+      931 +              <div class="pstat-num">${favorites}</div>       
+      932 +              <div class="pstat-label">Favorites</div>        
+      933 +            </div>                                            
+      934 +            <div class="pstat">                               
+      935 +              <div class="pstat-num">${avgRating !== null ? av
+          +gRating : '&mdash;'}</div>                                    
+      936 +              <div class="pstat-label">Avg Rating</div>       
+      937 +            </div>                                            
+      938 +          </div>                                              
+      939 +        </div>                                                
+      940 +      </div>                                                  
+      941 +    `;                                                        
+      942 +                                                              
+      943 +    document.getElementById('btnEditProfile').addEventListener
+          +('click', () => {                                             
+      944 +      state.editingProfile = true;                            
+      945 +      renderProfilePage();                                    
+      946 +    });                                                       
+      947 +  }                                                           
+      948 +}                                                             
+      949 +                                                              
+      950 +/* ======================================================     
+      951     UTILITY
+      952  ====================================================== */
+      953  function escHtml(str) {
+
+● Finally, wire up loadProfileData, updateProfileBtn, and the profile button
+  click in init():
+
+● Update(app.js)
+  ⎿  Added 2 lines
+      960  function init() {
+      961    loadUserData();
+      962    loadCustomItems();
+      963 +  loadProfileData();                                          
+      964    populateAddGenreSelect();
+      965    populateGenreFilter();
+      966 +  updateProfileBtn();                                         
+      967    renderGrid();
+      968  
+      969    /* --- Tab buttons --- */
+
+● Update(app.js)
+  ⎿  Added 18 lines
+      1083    /* --- Add modal: form submit --- */
+      1084    document.getElementById('addForm').addEventListener('submit
+            ', submitAddForm);
+      1085  
+      1086 +  /* --- Profile button (top-right of header) --- */         
+      1087 +  document.getElementById('profileBtn').addEventListener('cli
+           +ck', () => {                                                 
+      1088 +    if (state.currentPage === 'profile') {                   
+      1089 +      // Return to the last browse tab                       
+      1090 +      const activeTab = document.querySelector('.tab-btn.acti
+           +ve');                                                        
+      1091 +      state.editingProfile = false;                          
+      1092 +      state.pendingAvatar  = null;                           
+      1093 +      if (activeTab && activeTab.dataset.tab === 'mylist') { 
+      1094 +        showPage('mylist');                                  
+      1095 +      } else {                                               
+      1096 +        showPage('browse');                                  
+      1097 +      }                                                      
+      1098 +    } else {                                                 
+      1099 +      document.querySelectorAll('.tab-btn').forEach(b => b.cl
+           +assList.remove('active'));                                   
+      1100 +      showPage('profile');                                   
+      1101 +    }                                                        
+      1102 +  });                                                        
+      1103 +                                                             
+      1104    /* --- Modal: Star rating --- */
+      1105    const stars = document.querySelectorAll('#modalStars .star'
+            );
+      1106  
+
+● Also make the tab buttons reset edit state when navigating away from the
+  profile page:
+
+● Update(app.js)
+  ⎿  Added 2 lines
+      973        btn.classList.add('active');
+      974  
+      975        if (btn.dataset.tab === 'mylist') {
+      976 +        state.editingProfile = false;                         
+      977 +        state.pendingAvatar  = null;                          
+      978          showPage('mylist');
+      979          return;
+      980        }
+
+● Update(app.js)
+  ⎿  Added 2 lines
+      979          return;
+      980        }
+      981  
+      982 +      state.editingProfile = false;                           
+      983 +      state.pendingAvatar  = null;                            
+      984        showPage('browse');
+      985        if (btn.dataset.tab === state.currentTab) return;
+      986        state.currentTab  = btn.dataset.tab;
+
+● Done. Here's everything that was added:
+
+  Profile button — a circular avatar icon sits at the far right of the header at
+   all times. Clicking it opens the profile page; clicking it again returns to
+  where you were. It shows your chosen avatar emoji once you've set one, and
+  glows with an accent ring when active.
+
+  Profile page — view mode
+  - Large avatar circle with gradient background
+  - Display name, bio, favorite genre chip, "Member since" date
+  - Activity stats grid: Total Titles / Completed / Favorites / Avg Rating
+  - First-time visitors see a "Set Up Profile" prompt instead of "Edit Profile"
+
+  Profile page — edit mode
+  - Click the avatar circle or "Change Avatar" button to expand a 32-emoji 
+  avatar picker grid
+  - Editable fields: Display Name (required), Bio (up to 200 chars), Favorite
+  Genre (dropdown of all 15 genres)
+  - Save / Cancel — save persists everything to localStorage under its own key
+  (cinereads_profile_v1)
+  - Changes to the avatar reflect immediately in the header button
+
+  Storage — profile data is independent of ratings/reviews/favorites data, so it
+   survives separately and never interferes with other features.
+
+✻ Sautéed for 4m 42s
