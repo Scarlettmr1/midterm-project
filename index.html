@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0d1a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Reel&amp;Reed &mdash; Movie &amp; Book Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">&#127916;</div>
+        <div class="logo-text">
+          <h1>Reel&amp;Reed</h1>
+          <span>Track what you love</span>
+        </div>
+      </div>
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="movies">&#127916; Movies</button>
+        <button class="tab-btn" data-tab="books">&#128218; Books</button>
+        <button class="tab-btn" data-tab="mylist">&#128203; My List</button>
+      </nav>
+      <button class="profile-hdr-btn" id="profileBtn" aria-label="Profile" title="Profile">&#128100;</button>
+    </div>
+  </header>
+
+  <!-- Filters -->
+  <section class="filters-section" id="filtersSection">
+    <div class="filters-inner">
+      <div class="search-wrap">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="searchInput" placeholder="Search titles, directors, authors...">
+      </div>
+      <div class="selects-wrap">
+        <select id="genreFilter">
+          <option value="all">All Genres</option>
+        </select>
+        <select id="statusFilter">
+          <option value="all">All Items</option>
+          <option value="favorites">&#10084; Favorites</option>
+          <option value="completed">&#10003; Watched / Read</option>
+          <option value="pending">&#9201; Not Yet</option>
+          <option value="rated">&#9733; Rated</option>
+        </select>
+        <select id="sortFilter">
+          <option value="default">Sort: Default</option>
+          <option value="recent">Sort: Recently Added</option>
+          <option value="rating">Sort: Highest Rated</option>
+          <option value="title">Sort: A &#8594; Z</option>
+          <option value="year-desc">Sort: Newest</option>
+          <option value="year-asc">Sort: Oldest</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-section" id="statsSection">
+    <div class="stats-inner" id="statsBar"></div>
+  </section>
+
+  <!-- My List Page -->
+  <div id="myListPage" style="display:none"></div>
+
+  <!-- Profile Page -->
+  <div id="profilePage" style="display:none"></div>
+
+  <!-- Grid -->
+  <main id="browseMain">
+    <div class="grid" id="itemGrid"></div>
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">&#128269;</div>
+      <p>No items match your current filters.</p>
+      <button id="clearFilters">Clear Filters</button>
+    </div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Item detail">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">&#x2715;</button>
+      <div class="modal-cover" id="modalCover">
+        <div class="modal-cover-icon" id="modalCoverIcon"></div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info">
+          <div class="modal-badges">
+            <span class="modal-genre-badge" id="modalGenreBadge"></span>
+            <span class="modal-custom-badge" id="modalCustomBadge" style="display:none">&#10022; Custom</span>
+          </div>
+          <h2 id="modalTitle"></h2>
+          <p class="modal-meta" id="modalMeta"></p>
+          <p class="modal-desc" id="modalDesc"></p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-action btn-complete" id="modalComplete"></button>
+          <button class="btn-action btn-favorite" id="modalFavorite"></button>
+          <button class="btn-action btn-delete" id="modalDelete" style="display:none" title="Remove this custom title">&#128465;</button>
+        </div>
+
+        <div class="modal-platform-section" id="modalPlatforms"></div>
+
+        <div class="modal-rating-section">
+          <h3>Your Rating</h3>
+          <div class="star-picker" id="modalStars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+          </div>
+          <span class="rating-label" id="ratingLabel">Not rated yet</span>
+        </div>
+
+        <div class="modal-review-section">
+          <h3>Your Review</h3>
+          <textarea id="reviewText" rows="4" placeholder="Share your thoughts..."></textarea>
+          <button class="btn-save" id="btnSaveReview">Save Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Title Modal -->
+  <div class="modal-overlay" id="addModalOverlay" role="dialog" aria-modal="true" aria-label="Add title">
+    <div class="modal add-modal" id="addModal">
+      <button class="modal-close" id="addModalClose" aria-label="Close">&#x2715;</button>
+      <div class="add-modal-header">
+        <h2>&#43; Add a Title</h2>
+        <p>Create your own entry in the collection</p>
+      </div>
+      <form class="add-form" id="addForm" novalidate>
+        <div class="form-group">
+          <label>Type</label>
+          <div class="type-toggle">
+            <button type="button" class="type-btn active" data-type="movie">&#127916; Movie</button>
+            <button type="button" class="type-btn" data-type="book">&#128218; Book</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="addTitle">Title <span class="required">*</span></label>
+          <input type="text" id="addTitle" placeholder="e.g. The Batman" maxlength="100" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="addGenre">Genre <span class="required">*</span></label>
+            <select id="addGenre">
+              <option value="">Select a genre&hellip;</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="addYear">Year <span class="required">*</span></label>
+            <input type="number" id="addYear" placeholder="2024" min="1800" max="2099">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="addCredit" id="addCreditLabel">Director <span class="required">*</span></label>
+          <input type="text" id="addCredit" placeholder="e.g. Christopher Nolan" maxlength="80" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="addDesc">Description</label>
+          <textarea id="addDesc" rows="3" placeholder="Brief synopsis&hellip;" maxlength="400"></textarea>
+        </div>
+        <p class="form-error" id="addFormError"></p>
+        <button type="submit" class="btn-save btn-full">Add to Collection</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" id="fabAdd" aria-label="Add a title">
+    <span class="fab-plus">&#43;</span>
+    <span class="fab-label">Add Title</span>
+  </button>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
